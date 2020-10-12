@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/kevingtzz/Metodos_numericos_app/issues"
   },
-  "homepage": "https://github.com/kevingtzz/Metodos_numericos_app#readme"
+  "homepage": "https://github.com/kevingtzz/Metodos_numericos_app#readme",
+  "dependencies": {
+    "table": "^6.0.3"
+  }
 }
