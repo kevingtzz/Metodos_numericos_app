@@ -102,21 +102,20 @@ function gaussianaPivotTotal(){
                 M[h].push(b[0][h].toPrecision(8));
             }
             for(i = 0; i < M.length; i++){
-                /*console.log("ETAPA " + i);
-                let output = table(data);
-                console.log(output);*/
-                M = cambiarFilas(M, i);
-                for(j = 0; j < M[i].length - 1; j++){
-                    if((i > j) && (M[i][j] != 0)){
-                        divisor = M[i][j] / M[j][j];
-                        for(k = 0; k < M[i].length; k++){
-                            M[i][k] = (M[i][k] - (divisor * M[j][k])).toPrecision(8);
-                        }
-                    }
-                }
                 console.log("ETAPA " + i);
+                data = [];
+                for(h = 0; h < A.length; h++){
+                    data.push(M[h]);
+                }
                 let output = table(data);
                 console.log(output);
+                M = cambiarFilas(M, i);
+                for(j = i + 1; j < M.length; j++){
+                    divisor = M[j][i] / M[i][i];
+                    for(k = i; k < M.length + 1; k++){
+                        M[j][k] = (M[j][k] - (divisor * M[i][k])).toPrecision(8);
+                    }
+                }
             }
             x = new Array(A.length);
             for(i = 0; i < x.length; i++){

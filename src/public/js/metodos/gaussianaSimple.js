@@ -79,18 +79,14 @@ function gaussianaSimple(){
                 M[i].push(b[0][i].toPrecision(8));
             }
             for(i = 0; i < M.length; i++){
-                for(j = 0; j < M[i].length; j++){
-                    if(i == 0){
-                        M[i][j] = M[i][j];
-                    }
-                    if((i > j) && (M[i][j] != 0)){
-                        divisor = M[i][j] / M[j][j];
-                        for(k = 0; k < M[i].length; k++){
-                            M[i][k] = (M[i][k] - (divisor * M[j][k])).toPrecision(8);
-                        }
+                for(j = i + 1; j < M.length; j++){
+                    divisor = M[j][i] / M[i][i];
+                    for(k = i; k < M.length + 1; k++){
+                        M[j][k] = (M[j][k] - (divisor * M[i][k])).toPrecision(8);
                     }
                 }
-                console.log("ETAPA " + i);let output = table(data);
+                console.log("ETAPA " + i);
+                let output = table(data);
                 console.log(output);
             }
             x = new Array(A.length);
