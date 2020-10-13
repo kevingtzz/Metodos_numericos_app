@@ -45,18 +45,28 @@ function formarMatrizb(blaso){
 
 function cambiarFilas(M, i){
     aux = i;
-    for(f = i + 1; f < M.length; f++){
-        if (Math.abs(M[aux][i]) < Math.abs(M[f][i])){
-            aux = f;
+    aux2 = i;
+    for(f = i; f < M.length; f++){
+        for(h = i; h < M.length; h++){
+            if (Math.abs(M[aux][aux2]) < Math.abs(M[f][h])){
+                aux = f;
+                aux2 = h;
+            }
         }
+        
     }
     filaAux = M[i];
     M[i] = M[aux];
     M[aux] = filaAux;
+    for(b = 0; b < M.length; b++){
+        colAux = M[b][i];
+        M[b][i] = M[b][aux2];
+        M[b][aux2] = colAux;
+    }
     return M;
 }
 
-function gaussianaPivotParcial(){
+function gaussianaPivotTotal(){
     var aso = [];
     const readline = require('readline');
     
@@ -126,4 +136,4 @@ function gaussianaPivotParcial(){
     });
 }
 
-gaussianaPivotParcial()
+gaussianaPivotTotal()
