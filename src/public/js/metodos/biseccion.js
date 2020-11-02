@@ -1,22 +1,18 @@
-const { error } = require('console');
-
 function f(x){
     return Math.log((Math.sin(x) * Math.sin(x)) + 1) - (1/2);
 }
 
 function biseccion(){
-    const table = require('table').table;
-    const fs = require('fs');
-    let data = [
-        ['Iter', 'a', 'xm', 'b', 'f(xm)', 'E']
-    ];
+    let data = [['Iter', 'a', 'xm', 'b', 'f(xm)', 'E']];
+
     a = 0;
     b = 1;
     tol = 0.0000001;//E-7
     niter = 100;
     fa = f(a);
     fb = f(b);
-    if (fa == 0){
+
+    if (fa == 0) {
         console.log("Se encontro una aproximacion de la raiz en " + xm);
     } else {
         xm = (a + b)/(2);
@@ -47,8 +43,7 @@ function biseccion(){
             console.log("El metodo no encontro el resultado");
         }
     }
-    let output = table(data);
-    console.log(output);
+    console.log(data);
 }
 
 biseccion()

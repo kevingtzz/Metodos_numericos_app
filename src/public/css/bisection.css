@@ -3,46 +3,89 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
     font-family: 'Rubik', sans-serif;
+    color: white;
+    letter-spacing: 5px;
 }
 
-#canvas1 {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+body {
     background: radial-gradient(rgb(39, 56, 133), rgb(2, 1, 53));
-    z-index: -1;
+    background-attachment: fixed;
+    padding: 20px;
 }
 
-.buttons{
-    position: relative;
-    margin: auto;
-    margin-top: 50px;
+.container {
     display: grid;
-    width: 80%;
-    height: auto;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: auto;
+    gap: 8px;
+    grid-template-rows: auto auto auto;
+    /* grid-template-columns: repeat(6, auto); */
+    /* grid-template-areas: "none title title title title none"; */
 }
 
-.buttons a {
+.title {
+    margin: 20px;
+    text-align: center; 
+}
+
+.inputs {
+    grid-row: 1;
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 8px;
+}
+
+input {
+    border: 2px solid #aaa;
+    border-radius: 4px;
+    background: none;
+    outline: none;
+    padding: 8px;
+    box-sizing: border-box;
+    transition: .3s;
+    text-align: center;
+}
+
+input:focus {
+    border-color: dodgerblue;
+    box-shadow: 0 0 8px 0 dodgerblue;
+}
+
+#function {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    width: 100%;
+}
+
+.lil-input {
+    width: 100%;
+}
+
+#start {
+    grid-row: 2;
+}
+
+.container a {
     text-align: center;
     justify-content: center;
     position: relative;
-    margin: 20px auto;
-    padding: 25px 10px;
+    margin: 10px auto; 
+    padding: 17px 10px;
     display: block;
     text-decoration: none;
     text-transform: uppercase;
-    width: 100px;
-    height: 80px;
+    width: 150px;
+    height: 5px;
     border-radius: 20px;
     overflow: hidden;
 }
 
-.buttons a span {
+.container a:hover {
+    box-shadow: 0 0 8px 0 dodgerblue;
+}
+
+.container a span {
     position: relative;
+    top: -7px;
     z-index: 1;
     color: #fff;
     font-size: 0.7rem;
@@ -52,19 +95,15 @@
 .liquid {
     position: absolute;
     left: 0;
-    top: -20px;
-    width: 100px;
+    top: -35px;
+    width: 100%;
     height: 200px;
     background: #4973ff;
     box-shadow: inset 0 0 50px rgba(0,0,0,.5);
     transition: 0.5s;
 }
 
-.liquid-direct {
-    background: #9c1f4f !important;
-}
-
-.buttons a:hover .liquid {
+.container a:hover .liquid {
     top: -80px;
 }
 
@@ -99,17 +138,4 @@
     100% {
         transform: translate(-50%, -75%) rotate(360deg);
     }
-}
-
-@media only screen and (min-width: 600px) {
-    .buttons {
-        grid-template-columns: repeat(4, 1fr);
-    }
-}
-
-@media only screen and (min-width: 900px) {
-    .buttons {
-        grid-template-columns: repeat(5, 1fr);
-    }
-}
-
+} 
