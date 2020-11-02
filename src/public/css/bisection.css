@@ -140,6 +140,8 @@ input:focus {
 
 .table {
     margin-top: 30px;
+    max-height: 300px;
+    overflow: scroll;
 }
 
 table {
@@ -155,6 +157,7 @@ table {
 table thead tr {
     background-color: rgba(131, 153, 182, 0.5);
     font-weight: bold;
+    table-layout: fixed;
 }
 
 table td {
@@ -179,4 +182,14 @@ table tbody tr:last-of-type {
     background-color: rgba(0, 165, 36, 0.5);
 }
 
+@media only screen and (min-width: 600px) {
+    .table {
+        max-height: 600px;
+    }
+}
 
+@media only screen and (min-width: 900px) {
+    .table {
+        max-height: 400px;
+    }
+}

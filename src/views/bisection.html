@@ -11,10 +11,10 @@
     <div class="container">
         <div class="inputs">
             <input type="text" name="function" placeholder="function" autofocus id="function">
-            <input type="number" name="a" placeholder="interval a" id="input-a" class="lil-input">
-            <input type="number" name="b" placeholder="interval b" id="input-b" class="lil-input">
-            <input type="number" name="iterations" placeholder="iterations" id="iterations" class="lil-input">
-            <input type="number" name="tolerance" placeholder="tolerance" id="tolerance" class="lil-input">
+            <input type="number" min="any" step="any" required name="a" placeholder="interval a" id="input-a" class="lil-input">
+            <input type= "number" min="any" step="any" name="b" placeholder="interval b" id="input-b" class="lil-input">
+            <input type="number" min="1" name="iterations" placeholder="iterations" id="iterations" class="lil-input">
+            <input type="number" min="0" step="any" name="tolerance" placeholder="tolerance" id="tolerance" class="lil-input">
         </div>
         <a href="#" id="start">
             <span>start</span>
@@ -32,7 +32,7 @@
                         <td>E</td>
                     </tr>
                 </thead>
-                <tbody></tbody>
+                <tbody id="table-body"></tbody>
             </table>
         </div>
     </div>
