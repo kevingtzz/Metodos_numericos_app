@@ -1,5 +1,5 @@
 const button = document.getElementById('start');
-const tbody = document.getElementById('table-body');
+const table = document.getElementById('table');
 
 var table_created = false;
 var num_decimals = 4;
@@ -12,7 +12,7 @@ button.addEventListener('click', () => {
     biseccion();
 });
 
-function create_table(data) {
+function create_table(data, tbody) {
     data.forEach(row => {
         let trow = document.createElement('tr');
 
@@ -98,19 +98,22 @@ function biseccion() {
                 data.push([cont, Number.parseFloat(a).toPrecision(17), Number.parseFloat(xm).toPrecision(17), Number.parseFloat(b).toPrecision(17), Number.parseFloat(fxm).toExponential(1), Number.parseFloat(error).toExponential(1)]);
                 cont = cont + 1;
             }
-            if (fxm == 0) {
-                if (!table_created) create_table(data);
-                alert('Approximation found on: ' + xm);
-            } else if (error < tol) {
-                if (!table_created) create_table(data);
+            if ((fxm == 0) || (error < tol)) {
+                if (!table_created) {
+                    create_table(data, document.getElementById('table-body'));
+                } else {
+                    table.removeChild(document.getElementById('table-body'));
+                    let tbody = document.createElement('tbody');
+                    tbody.setAttribute("id", "table-body");
+                    table.appendChild(tbody);
+                    create_table(data, tbody);
+                }
                 alert('Approximation found on: ' + xm);
             } else {
                 alert("The method didn't find an approximation");
             }
         }
-
     }
-
 }
 
 function round(num, decimales = 2) {
