@@ -1,9 +1,7 @@
-function f(x){
-    return Math.log((Math.sin(x) * Math.sin(x)) + 1) - (1/2);
-}
-
 function secante(){
     const table = require('table').table;
+    var mathjs = require('mathjs');
+    let str = 'log(sin(x)^2 + 1) - (1/2)';
     const fs = require('fs');
     let data = [
         ['Iter','xi','f(xi)','E']
@@ -12,11 +10,23 @@ function secante(){
     x1 = 1;
     tol = 0.0000001; //E-7
     niter = 100;
-    fx0 = f(x0);
+    if(niter < 0){
+        console.log("El numero de iteraciones debe ser positivo");
+        return("Error");
+    }
+    if(tol < 0){
+        console.log("La tolerancia debe ser positiva");
+        return("Error");
+    }
+    if(x1 <= x0){
+        console.log("x1 debe ser mayor a x0");
+        return("Error");
+    }
+    fx0 = mathjs.evaluate(str,{x:x0});
     if (fx0 == 0){
         console.log("Se encontro una aproximacion de la raiz en " + x0);
     } else {
-        fx1 = f(x1);
+        fx1 = mathjs.evaluate(str,{x:x1});
         cont = 0;
         var error = tol + 1;
         data.push([cont, Number.parseFloat(x0).toPrecision(17), Number.parseFloat(fx0).toExponential(1), '']);
@@ -26,7 +36,7 @@ function secante(){
             x0 = x1;
             fx0 = fx1;
             x1 = xn;
-            fx1 = f(xn);
+            fx1 = mathjs.evaluate(str,{x:xn});
             cont = cont + 1;
             data.push([cont, Number.parseFloat(x0).toPrecision(17), Number.parseFloat(fx0).toExponential(1), Number.parseFloat(error).toExponential(1)]);
         }
