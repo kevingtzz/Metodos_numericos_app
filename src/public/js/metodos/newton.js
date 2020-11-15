@@ -1,15 +1,10 @@
 
-function funcionNormal(x) {
-    return Math.log((Math.sin(x) * Math.sin(x)) + 1) - (1 / 2);
-}
-
-function funcionDerivada(x) {
-    return (2 * Math.pow(((Math.sin(x) * Math.sin(x)) + 1),  (-1))) * (Math.sin(x)) * (Math.cos(x));
-}
-
 function newton() {
     const table = require('table').table;
     const fs = require('fs');
+    var mathjs = require('mathjs');
+    let str = 'log(sin(x)^2+1)-(1/2)';
+    var dfx = mathjs.derivative(str,'x');
     let data = [
         ['iter', 'xi', 'f(xi)', 'E']
     ];
@@ -17,15 +12,24 @@ function newton() {
     tol = 0.0000001;
     niter = 100;
 
-    fx0 = funcionNormal(x0);
-    dfx0 = funcionDerivada(x0);
+    if(niter < 0){
+        console.log("El numero de iteraciones debe ser positivo");
+        return("Error");
+    }
+    if(tol < 0){
+        console.log("La tolerancia debe ser positiva");
+        return("Error");
+    }
+
+    fx0 = mathjs.evaluate(str,{x:x0});
+    dfx0= dfx.evaluate({x:x0});
     contador = 0;
     var error = tol + 1;
     data.push([contador, Number.parseFloat(x0).toPrecision(17), Number.parseFloat(fx0).toExponential(1), '']);
     while ((error > tol) && (fx0 != 0) && (dfx0 != 0) && (contador < niter)) {
         xn = x0 - (fx0 / dfx0);
-        fx0 = funcionNormal(xn);
-        dfx0 = funcionDerivada(xn);
+        fx0 = mathjs.evaluate(str,{x:xn});
+        dfx0= dfx.evaluate({x:xn});
         error = Math.abs(xn - x0);
         x0 = xn;
         contador = contador + 1;
