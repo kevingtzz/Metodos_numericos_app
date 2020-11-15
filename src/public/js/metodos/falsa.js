@@ -1,11 +1,10 @@
-
-function funcionNormal(x) {
-    return Math.log((Math.sin(x) * Math.sin(x)) + 1) - (1 / 2);
-}
+const { string } = require('mathjs');
 
 function reglaFalsa() {
     const table = require('table').table;
     const fs = require('fs');
+    var mathjs = require('mathjs');
+    let str = 'log(sin(x)^2+1)-(1/2)';
     let data = [
         ['iter', 'a', 'xm','b','f(xm)', 'E']
     ];
@@ -15,14 +14,26 @@ function reglaFalsa() {
     tol = 0.0000001;
     niter = 100;
 
-    fa = funcionNormal(a);
-    fb = funcionNormal(b);
+    if(niter < 0){
+        console.log("El numero de iteraciones debe ser positivo");
+        return("Error");
+    }
+    if(tol < 0){
+        console.log("La tolerancia debe ser positiva");
+        return("Error");
+    }
+    if(b <= a){
+        console.log("b debe ser mayor a a");
+        return("Error");
+    }
 
+    fa = mathjs.evaluate(str,{x:a});
+    fb = mathjs.evaluate(str,{x:b});
     if (fa == 0) {
         console.log(a + " es una raiz");
     } else if ((fa * fb) < 0) {
         xm = (a - ((fa * (b - a)) / (fb - fa)));
-        fxm = funcionNormal(xm);
+        fxm= mathjs.evaluate(str,{x:xm});
         contador = 1;
         var error = tol + 1;
 
@@ -38,7 +49,7 @@ function reglaFalsa() {
         }
         xprev = xm;
         xm = (a - ((fa * (b - a)) / (fb - fa)));
-        fxm = funcionNormal(xm);
+        fxm= mathjs.evaluate(str,{x:xm});
         error = Math.abs(xm - xprev);
         contador = contador + 1;
         data.push([contador, Number.parseFloat(a).toPrecision(17), Number.parseFloat(xm).toPrecision(17), Number.parseFloat(b).toPrecision(17), Number.parseFloat(fxm).toExponential(1) ,Number.parseFloat(error).toExponential(1)]);
