@@ -56,10 +56,13 @@ function f(x){
 }
 
 function biseccion() {
+    let func = document.getElementById('function').value;
     let a = document.getElementById('input-a').value;
     let b = document.getElementById('input-b').value;
     let niter = document.getElementById('iterations').value;
     let tol = document.getElementById('tolerance').value;
+
+    console.log(func);
 
     if ((a == '') || (b == '') || (niter == '') || (tol == '')) {
         alert('Values missing');

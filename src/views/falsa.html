@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/bisection.css">
+    <script src="https://pagecdn.io/lib/mathjs/7.1.0/math.min.js"></script>
+    <title>False Position</title>
+</head>
+<body>
+    <h1 class="title">False Position</h1>
+    <div class="container">
+        <div class="inputs">
+            <input type="text" name="function" placeholder="function" autofocus id="function">
+            <input type="number" min="any" step="any" required name="a" placeholder="interval a" id="input-a" class="lil-input">
+            <input type= "number" min="any" step="any" name="b" placeholder="interval b" id="input-b" class="lil-input">
+            <input type="number" min="1" name="iterations" placeholder="iterations" id="iterations" class="lil-input">
+            <input type="number" min="0" step="any" name="tolerance" placeholder="tolerance" id="tolerance" class="lil-input">
+        </div>
+        <a href="#" id="start">
+            <span>start</span>
+            <div class="liquid"></div>
+        </a>
+        <div class="table">
+            <table id="table">
+                <thead>
+                    <tr>
+                        <td>i</td>
+                        <td>a</td>
+                        <td>xm</td>
+                        <td>b</td>
+                        <td>f(xm)</td>
+                        <td>E</td>
+                    </tr>
+                </thead>
+                <tbody id="table-body"></tbody>
+            </table>
+        </div>
+    </div>
+    <script src="./js/metodos/falsa.js"></script>
+</body>
+</html>
