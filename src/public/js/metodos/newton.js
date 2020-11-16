@@ -1,13 +1,8 @@
-
 function newton() {
-    const table = require('table').table;
-    const fs = require('fs');
     var mathjs = require('mathjs');
-    let str = 'log(sin(x)^2+1)-(1/2)';
-    var dfx = mathjs.derivative(str,'x');
-    let data = [
-        ['iter', 'xi', 'f(xi)', 'E']
-    ];
+    let str = 'log(sin(x)^2+1)-(1/2)';//esta es la funcion
+    var dfx = math.derivative(str,'x');
+    let data = [];
     x0 = 0.5;
     tol = 0.0000001;
     niter = 100;
@@ -21,14 +16,14 @@ function newton() {
         return("Error");
     }
 
-    fx0 = mathjs.evaluate(str,{x:x0});
+    fx0 = math.evaluate(str,{x:x0});
     dfx0= dfx.evaluate({x:x0});
     contador = 0;
     var error = tol + 1;
     data.push([contador, Number.parseFloat(x0).toPrecision(17), Number.parseFloat(fx0).toExponential(1), '']);
     while ((error > tol) && (fx0 != 0) && (dfx0 != 0) && (contador < niter)) {
         xn = x0 - (fx0 / dfx0);
-        fx0 = mathjs.evaluate(str,{x:xn});
+        fx0 = math.evaluate(str,{x:xn});
         dfx0= dfx.evaluate({x:xn});
         error = Math.abs(xn - x0);
         x0 = xn;
@@ -45,7 +40,6 @@ function newton() {
     } else {
         console.log("El  metodo no encontro el resultado, intente de nuevo");
     }
-    let output = table(data);
-    console.log(output);
+    console.table(data);
 }
 newton()

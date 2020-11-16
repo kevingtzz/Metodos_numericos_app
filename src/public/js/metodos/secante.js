@@ -1,11 +1,7 @@
 function secante(){
-    const table = require('table').table;
     var mathjs = require('mathjs');
-    let str = 'log(sin(x)^2 + 1) - (1/2)';
-    const fs = require('fs');
-    let data = [
-        ['Iter','xi','f(xi)','E']
-    ];
+    let str = 'log(sin(x)^2 + 1) - (1/2)';//esta es la funcion
+    let data = [];
     x0 = 0.5;
     x1 = 1;
     tol = 0.0000001; //E-7
@@ -22,11 +18,11 @@ function secante(){
         console.log("x1 debe ser mayor a x0");
         return("Error");
     }
-    fx0 = mathjs.evaluate(str,{x:x0});
+    fx0 = math.evaluate(str,{x:x0});
     if (fx0 == 0){
         console.log("Se encontro una aproximacion de la raiz en " + x0);
     } else {
-        fx1 = mathjs.evaluate(str,{x:x1});
+        fx1 = math.evaluate(str,{x:x1});
         cont = 0;
         var error = tol + 1;
         data.push([cont, Number.parseFloat(x0).toPrecision(17), Number.parseFloat(fx0).toExponential(1), '']);
@@ -36,7 +32,7 @@ function secante(){
             x0 = x1;
             fx0 = fx1;
             x1 = xn;
-            fx1 = mathjs.evaluate(str,{x:xn});
+            fx1 = math.evaluate(str,{x:xn});
             cont = cont + 1;
             data.push([cont, Number.parseFloat(x0).toPrecision(17), Number.parseFloat(fx0).toExponential(1), Number.parseFloat(error).toExponential(1)]);
         }
@@ -50,8 +46,7 @@ function secante(){
             console.log("El metodo no encontro el resultado");
         }
     }
-    let output = table(data);
-    console.log(output);
+    console.table(data);
 }
 
 secante()

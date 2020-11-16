@@ -1,13 +1,9 @@
 function raicesMultiples(){
-    const table = require('table').table;
     var mathjs = require('mathjs');
-    let str = 'e^x - x - 1';
-    const fs = require('fs');
-    var dh = mathjs.derivative(str,'x');
-    var ddh = mathjs.derivative(dh, 'x');
-    let data = [
-        ['Iter', 'xi', 'f(xi)', 'E']
-    ];
+    let str = 'e^x - x - 1';//esta es la funcion
+    var dh = math.derivative(str,'x');
+    var ddh = math.derivative(dh, 'x');
+    let data = [];
     x0 = 1;
     tol = 0.0000001; //E-7
     niter = 100;
@@ -19,7 +15,7 @@ function raicesMultiples(){
         console.log("La tolerancia debe ser positiva");
         return("Error");
     }
-    fx = mathjs.evaluate(str,{x:x0});
+    fx = math.evaluate(str,{x:x0});
     dfx = dh.evaluate({x:x0});
     ddfx = ddh.evaluate({x:x0});
     cont = 0;
@@ -27,7 +23,7 @@ function raicesMultiples(){
     data.push([cont, Number.parseFloat(x0).toPrecision(17), Number.parseFloat(fx).toExponential(1),'']);
     while ((error > tol) && (cont < niter)){
         x1 = x0 - ((fx * dfx)/((Math.pow(dfx, 2)) - (fx * ddfx)));
-        fx = mathjs.evaluate(str,{x:x1});
+        fx = math.evaluate(str,{x:x1});
         dfx = dh.evaluate({x:x1});
         ddfx = ddh.evaluate({x:x1});
         error = Math.abs(x1 - x0);
@@ -46,8 +42,7 @@ function raicesMultiples(){
     } else {
         console.log("El metodo no encontro la solucion");
     }
-    let output = table(data);
-    console.log(output);
+    console.table(data);
 }
 
 raicesMultiples()

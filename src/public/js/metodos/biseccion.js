@@ -62,7 +62,7 @@ function biseccion() {
     let niter = document.getElementById('iterations').value;
     let tol = document.getElementById('tolerance').value;
 
-    console.log(func);
+    //console.log(func);
 
     if ((a == '') || (b == '') || (niter == '') || (tol == '')) {
         alert('Values missing');
@@ -75,14 +75,14 @@ function biseccion() {
         //b = 1;
         //tol = 0.0000001;//E-7
         //niter = 100;
-        fa = f(a);
-        fb = f(b);
+        fa = math.evaluate(func,{x:a});
+        fb = math.evaluate(func,{x:b});
     
         if (fa == 0) {
             console.log("Se encontro una aproximacion de la raiz en " + xm);
         } else {
             xm = (a + b)/(2);
-            fxm = f(xm);
+            fxm = math.evaluate(func,{x:xm});
             cont = 1;
             var error = tol + 1;
             data.push([0, Number.parseFloat(a).toPrecision(17), Number.parseFloat(xm).toPrecision(17), Number.parseFloat(b).toPrecision(17), Number.parseFloat(fxm).toExponential(1), '']);
@@ -96,7 +96,7 @@ function biseccion() {
                 }
                 xprev = xm;
                 xm = (a + b)/(2);
-                fxm = f(xm);
+                fxm = math.evaluate(func,{x:xm});
                 error = Math.abs(xprev - xm);
                 data.push([cont, Number.parseFloat(a).toPrecision(17), Number.parseFloat(xm).toPrecision(17), Number.parseFloat(b).toPrecision(17), Number.parseFloat(fxm).toExponential(1), Number.parseFloat(error).toExponential(1)]);
                 cont = cont + 1;
