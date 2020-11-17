@@ -88,7 +88,6 @@ function gaussianaPivotTotal(){
         } else {
             A = formarMatrizA(aso);
             b = formarMatrizb(blaso);
-            const table = require('table').table;
             let data = [];
             var M = [];
             M = A;
@@ -107,8 +106,7 @@ function gaussianaPivotTotal(){
                 for(h = 0; h < A.length; h++){
                     data.push(M[h]);
                 }
-                let output = table(data);
-                console.log(output);
+                console.table(data);
                 M = cambiarFilas(M, i);
                 for(j = i + 1; j < M.length; j++){
                     divisor = M[j][i] / M[i][i];

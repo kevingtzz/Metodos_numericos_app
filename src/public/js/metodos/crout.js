@@ -1,5 +1,3 @@
-const { dot } = require('mathjs');
-
 function sustProgr(M){
     let x = new Array(M.length);
     for(let i = 0; i < x.length; i++){
@@ -33,10 +31,18 @@ function sustRegr(M){
 function crout(){
     console.log("Crout");
     console.log("Resultados: \n");
-    var mathjs = require('mathjs');
-    const table = require('table').table;
-    let A = [[4, -1, 0, 3], [1, 15.5, 3, 8], [0, -1.3, -4, 1.1], [14, 5, -2, 30]];
-    let b = [1, 1, 1, 1];
+    let A = [[4, -1, 0, 3], [1, 15.5, 3, 8], [0, -1.3, -4, 1.1], [14, 5, -2, 30]];//entrada
+    let b = [1, 1, 1, 1];//entrada
+    for(let i = 0; i < A.length;i++){
+        if(A.length != A[i].length){
+            alert("La matriz A debe ser cuadrada");
+            return("Error");
+        }
+    }
+    if(A.length != b.length){
+        alert("Las matrices A debe tener la misma cantidad de columnas que filas de b");
+        return("Error");
+    }
     let L = [];
     let U = [];
     let dataA = [];
@@ -68,8 +74,7 @@ function crout(){
         dataU.push(U[i]);
     }
     console.log("Etapa 0");
-    let output = table(dataA);
-    console.log(output);
+    console.table(dataA);
     for(let i = 1; i < A.length + 1; i++){
         console.log("Etapa " + i);
         let sum = 0;
@@ -92,11 +97,9 @@ function crout(){
             U[i - 1][j - 1] = ((A[i - 1][j - 1] - sum) / (L[i - 1][i - 1])).toPrecision(8);
         }
         console.log("L: ");
-        output = table(dataL);
-        console.log(output);
+        console.table(dataL);
         console.log("U: ");
-        output = table(dataU);
-        console.log(output);
+        console.table(dataU);
     }
     
     let Lb = [];

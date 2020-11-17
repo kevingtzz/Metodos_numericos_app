@@ -1,5 +1,3 @@
-const { Expression } = require('algebra.js');
-const { table } = require('console');
 const { max } = require('mathjs');
 
 function hallarInversa(A){
@@ -133,7 +131,6 @@ function multiplicarMatrices(A, B){
 }
 
 function imprimirMatriz(A){
-    const table = require('table').table;
     let data = [];
     for(let i = 0; i < A.length; i++){
         for(let j = 0; j < A[i].length; j++){
@@ -143,8 +140,7 @@ function imprimirMatriz(A){
     for(let i = 0; i < A.length; i++){
         data.push(A[i]);
     }
-    let output = table(data);
-    return output;
+    return data;
 }
 
 function multiplicarMatrizPorConstante(A, y){
@@ -158,19 +154,37 @@ function multiplicarMatrizPorConstante(A, y){
 
 function sor(){
     //una wea
-    const table = require('table').table;
-    var algebra = require('algebra.js');
-    var matrix = require('mathjs');
-    var mama = require('ml-matrix');
-    var wawa = require('nd4js');
+    var mama = require('ml-matrix');//usa libreria
     let data = [];
-    let A = [[4, -1, 0, 3], [1, 15.5, 3, 8], [0, -1.3, -4, 1.1], [14, 5, -2, 30]];
-    let b = [[1], [1], [1], [1]];
-    let w = 1.5;
-    let x0 = [0, 0, 0, 0];
+    let A = [[4, -1, 0, 3], [1, 15.5, 3, 8], [0, -1.3, -4, 1.1], [14, 5, -2, 30]];//entrada
+    let b = [[1], [1], [1], [1]];//entrada
+    let w = 1.5;//entrada
+    let x0 = [0, 0, 0, 0];//entrada
     let x1 = new Array(x0.length);
-    let tol = 0.0000001;
-    let Nmax = 100;
+    let tol = 0.0000001;//entrada
+    let Nmax = 100;//entrada
+    for(let i = 0; i < A.length;i++){
+        if(A.length != A[i].length){
+            alert("La matriz A debe ser cuadrada");
+            return("Error");
+        }
+    }
+    if(A.length != b.length){
+        alert("Las matrices A debe tener la misma cantidad de columnas que filas de b");
+        return("Error");
+    }
+    if(x0.length != A.length){
+        alert("El vector inicial debe ser compatible con la matriz A");
+        return("Error");
+    }
+    if(Nmax < 0){
+        alert("El numero de iteraciones debe ser positivo");
+        return("Error");
+    }
+    if(tol < 0){
+        alert("La tolerancia debe ser positiva");
+        return("Error");
+    }
     let D = formarMatrizD(A);
     let L = formarMatrizL(A);
     let U = formarMatrizU(A);
@@ -189,7 +203,7 @@ function sor(){
         x0[i] = x0[i].toPrecision(8);
     }
     data = [
-        ['Iter', 'E', 'x']
+        /*['Iter', 'E', 'x']*/
     ];
     data.push([cont, '', x0]);
     while((cont < Nmax) && (error > tol)){
@@ -210,14 +224,13 @@ function sor(){
         x0 = x1;
         x1 = new Array(x0.length);
     }
-    let output = table(data);
-    console.log(output);
+    console.table(data);
     let matrizT = imprimirMatriz(T);
     console.log("T: ");
-    console.log(matrizT);
+    console.table(matrizT);
     let matrizC = imprimirMatriz(C);
     console.log("C: ");
-    console.log(matrizC);
+    console.table(matrizC);
     console.log("Radio espectral: ");
     var e = new mama.EigenvalueDecomposition(T);
     var aba = e.imaginaryEigenvalues;

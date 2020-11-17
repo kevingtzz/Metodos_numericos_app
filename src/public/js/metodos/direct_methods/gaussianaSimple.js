@@ -65,7 +65,6 @@ function gaussianaSimple(){
         } else {
             A = formarMatrizA(aso);
             b = formarMatrizb(blaso);
-            const table = require('table').table;
             let data = [];
             var M = [];
             M = A;
@@ -86,8 +85,7 @@ function gaussianaSimple(){
                     }
                 }
                 console.log("ETAPA " + i);
-                let output = table(data);
-                console.log(output);
+                console.table(data);
             }
             x = new Array(A.length);
             for(i = 0; i < x.length; i++){

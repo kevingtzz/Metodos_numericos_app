@@ -1,10 +1,13 @@
 
 function newtonInterpolacion(){
-    const table = require('table').table;
     console.log("Newton");
     console.log("Resultados: ");
-    let X = [-1, 0, 3, 4];
-    let Y = [15.5, 3, 8, 1];
+    let X = [-1, 0, 3, 4];//entrada
+    let Y = [15.5, 3, 8, 1];//entrada
+    if(X.length != Y.length){
+        alert("X y Y deben tener el mismo tamaño");
+        return("Error");
+    }
     let b = [];
     let D = [];
     let data = [];
@@ -48,8 +51,7 @@ function newtonInterpolacion(){
         
     }
     console.log("Tabla de diferencias divididas: ");
-    let output = table(data);
-    console.log(output);
+    console.table(data);
     console.log("Coeficientes del polinomio de Newton: ");
     console.log(b);
     console.log("Polinomio de Newton: ");

@@ -55,11 +55,14 @@ function cambiarFilas(M, i){
 }
 
 function vandermonde(){
-    const table = require('table').table;
     console.log("Vandermonde");
     console.log("Resultados: ");
-    let X = [-1, 0, 3, 4];
-    let Y = [15.5, 3, 8, 1];
+    let X = [-1, 0, 3, 4];//entrada
+    let Y = [15.5, 3, 8, 1];//entrada
+    if(X.length != Y.length){
+        alert("X y Y deben tener el mismo tamaño");
+        return("Error");
+    }
     let V = [];
     let data = [];
     for(let i = 0; i < X.length; i++){
@@ -72,8 +75,7 @@ function vandermonde(){
         }
     }
     console.log("Matriz de Vandermonde: ");
-    let output = table(data);
-    console.log(output);
+    console.table(data);
     let x = gaussTotal(V, Y);
     let str = "";
     console.log("Coeficientes del polinomio: ");

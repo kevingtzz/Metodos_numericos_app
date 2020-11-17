@@ -32,12 +32,21 @@ function sustRegr(M){
 function cholesky(){
     console.log("Cholesky");
     console.log("Resultados: \n");
-    let A = [[20, -1, 3, 4], [6, 23, 4, 3], [7, 21, 46, 9], [-3, -9, 12, 38]];
-    let b = [30, -10, 20, -14];
+    let A = [[20, -1, 3, 4], [6, 23, 4, 3], [7, 21, 46, 9], [-3, -9, 12, 38]];//entrada
+    let b = [30, -10, 20, -14];//entrada
+    for(let i = 0; i < A.length;i++){
+        if(A.length != A[i].length){
+            alert("La matriz A debe ser cuadrada");
+            return("Error");
+        }
+    }
+    if(A.length != b.length){
+        alert("Las matrices A debe tener la misma cantidad de columnas que filas de b");
+        return("Error");
+    }
     let L = [];
     let U = [];
-    var mathjs = require('mathjs');
-    const table = require('table').table;
+    var mathjs = require('mathjs');//usa mathjs
     let dataU = [];
     let dataL = [];
     let dataA = [];
@@ -95,16 +104,13 @@ function cholesky(){
         }
         if(i == 0){
             console.log("Etapa " + (i));
-            let ouput = table(dataA);
-            console.log(ouput);
+            console.table(dataA);
         }
         console.log("Etapa " + (i + 1));
         console.log("L: ");
-        let output = table(dataL);
-        console.log(output);
+        console.table(dataL);
         console.log("U: ");
-        output = table(dataU);
-        console.log(output);
+        console.table(dataU);
     }
     let Lb = [];
     Lb = L;

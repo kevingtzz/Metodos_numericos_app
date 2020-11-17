@@ -1,10 +1,11 @@
 function trazCub(){
-    var mathjs = require('mathjs');
-    let data = [];
-    //let X = [-1, 0, 3, 4];
-    //let Y = [15.5, 3, 8, 1];
-    let X = [0, 1, 2, 3, 4];
-    let Y = [9, 1, 1, 0, 1];
+    var mathjs = require('mathjs');//usa libreria
+    let X = [-1, 0, 3, 4];//entrada
+    let Y = [15.5, 3, 8, 1];//entrada
+    if(X.length != Y.length){
+        alert("X y Y deben tener el mismo tamaño");
+        return("Error");
+    }
     let len = 4 * (X.length - 1);
     let A = [];
     let b = new Array(len);

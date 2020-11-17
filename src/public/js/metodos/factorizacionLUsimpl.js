@@ -33,9 +33,18 @@ function sustRegr(M){
 function factorizacionLUsimpl(){
     console.log("LU con Gaussiana Simple: ");
     console.log("Resultados: ");
-    const table = require('table').table;
-    let A = [[4, -1, 0, 3], [1, 15.5, 3, 8], [0, -1.3, -4, 1.1], [14, 5, -2, 30]];
-    let b = [1, 1, 1, 1];
+    let A = [[4, -1, 0, 3], [1, 15.5, 3, 8], [0, -1.3, -4, 1.1], [14, 5, -2, 30]];//entrada
+    let b = [1, 1, 1, 1];//entrada
+    for(let i = 0; i < A.length;i++){
+        if(A.length != A[i].length){
+            alert("La matriz A debe ser cuadrada");
+            return("Error");
+        }
+    }
+    if(A.length != b.length){
+        alert("Las matrices A debe tener la misma cantidad de columnas que filas de b");
+        return("Error");
+    }
     let U = [];
     let L = [];
     let dataM = [];
@@ -90,14 +99,11 @@ function factorizacionLUsimpl(){
             U[i][j] = M[i][j];
         }
         console.log("Etapa " + i);
-        let output = table(dataM);
-        console.log(output);
-        output = table(dataL);
+        console.table(dataM);
         console.log("L: ");
-        console.log(output);
-        output = table(dataU);
+        console.table(dataL);
         console.log("U: ");
-        console.log(output);
+        console.table(dataU);
     }
     let Lb = [];
     Lb = L;
