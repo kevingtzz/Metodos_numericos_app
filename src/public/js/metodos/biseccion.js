@@ -71,10 +71,6 @@ function biseccion() {
         b = parseFloat(b);
     
         let data = [];
-        //a = 0;
-        //b = 1;
-        //tol = 0.0000001;//E-7
-        //niter = 100;
         fa = f(a);
         fb = f(b);
     
