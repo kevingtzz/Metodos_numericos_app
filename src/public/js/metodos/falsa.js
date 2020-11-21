@@ -113,9 +113,6 @@ function reglaFalsa() {
             create_table(data, tbody);
         }
         alert('Approximation found on: ' + xm);
-        // console.log("Se encontro una aproximacion de la raiz en " + xm);
-        // create_table(data, document.getElementById('table-body'));
-        // console.table(data);
     } else {
         alert("The method didn't find the result, try again.");
     }

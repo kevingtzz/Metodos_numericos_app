@@ -17,4 +17,8 @@ router.get('/false', (req, res) => {
     res.sendFile(path.join(config.AppPath, 'src/views/falsa.html'));
 });
 
+router.get('/incremental', (req, res) => {
+    res.sendFile(path.join(config.AppPath, 'src/views/incremental.html'));
+});
+
 module.exports = router;
