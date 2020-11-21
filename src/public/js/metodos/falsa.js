@@ -62,11 +62,6 @@ function reglaFalsa() {
     //let str = 'log(sin(x)^2+1)-(1/2)';
     let data = [];
 
-    // a = 0;
-    // b = 1;
-    // tol = 0.0000001;
-    // niter = 100;
-
     if(niter < 0){
         alert("El numero de iteraciones debe ser positivo");
         return("Error");
@@ -108,11 +103,21 @@ function reglaFalsa() {
         data.push([contador, Number.parseFloat(a).toPrecision(17), Number.parseFloat(xm).toPrecision(17), Number.parseFloat(b).toPrecision(17), Number.parseFloat(fxm).toExponential(1) ,Number.parseFloat(error).toExponential(1)]);
     }
     if (fxm == 0 || (error < tol)) {
-        console.log("Se encontro una aproximacion de la raiz en " + xm);
-        create_table(data, document.getElementById('table-body'));
-        console.table(data);
+        if (!table_created) {
+            create_table(data, document.getElementById('table-body'));
+        } else {
+            table.removeChild(document.getElementById('table-body'));
+            let tbody = document.createElement('tbody');
+            tbody.setAttribute("id", "table-body");
+            table.appendChild(tbody);
+            create_table(data, tbody);
+        }
+        alert('Approximation found on: ' + xm);
+        // console.log("Se encontro una aproximacion de la raiz en " + xm);
+        // create_table(data, document.getElementById('table-body'));
+        // console.table(data);
     } else {
-        console.log("El  metodo no encontro el resultado, intente de nuevo");
+        alert("The method didn't find the result, try again.");
     }
 }
 
