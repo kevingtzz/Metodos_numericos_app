@@ -51,9 +51,6 @@ function create_table(data, tbody) {
     });
 }
 
-function f(x){
-    return Math.log((Math.sin(x) * Math.sin(x)) + 1) - (1/2);
-}
 
 function biseccion() {
     let func = document.getElementById('function').value;
