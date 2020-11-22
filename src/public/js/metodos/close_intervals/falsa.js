@@ -22,17 +22,17 @@ function create_table(data, tbody) {
         trow.appendChild(i);
 
         let a = document.createElement('th');
-        let a_text = document.createTextNode(row[1], num_decimals);
+        let a_text = document.createTextNode(row[1]);
         a.appendChild(a_text);
         trow.appendChild(a);
 
         let xm = document.createElement('th');
-        let xm_text = document.createTextNode(row[2], num_decimals);
+        let xm_text = document.createTextNode(row[2]);
         xm.appendChild(xm_text);
         trow.appendChild(xm);
 
         let b = document.createElement('th');
-        let b_text = document.createTextNode(row[3], num_decimals);
+        let b_text = document.createTextNode(row[3]);
         b.appendChild(b_text);
         trow.appendChild(b);
 
@@ -116,17 +116,4 @@ function reglaFalsa() {
     } else {
         alert("The method didn't find the result, try again.");
     }
-}
-
-function round(num, decimales = 2) {
-    var signo = (num >= 0 ? 1 : -1);
-    num = num * signo;
-    if (decimales === 0) //con 0 decimales
-        return signo * Math.round(num);
-    // round(x * 10 ^ decimales)
-    num = num.toString().split('e');
-    num = Math.round(+(num[0] + 'e' + (num[1] ? (+num[1] + decimales) : decimales)));
-    // x * 10 ^ (-decimales)
-    num = num.toString().split('e');
-    return signo * (num[0] + 'e' + (num[1] ? (+num[1] - decimales) : -decimales));
 }

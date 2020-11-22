@@ -7,6 +7,35 @@ button.addEventListener('click', () => {
     newton();
 });
 
+function create_table(data, tbody) {
+    data.forEach(row => {
+        let trow = document.createElement('tr');
+
+        let i = document.createElement('th');
+        let i_text = document.createTextNode(row[0]);
+        i.appendChild(i_text);
+        trow.appendChild(i);
+
+        let xi = document.createElement('th');
+        let xi_text = document.createTextNode(row[1]);
+        xi.appendChild(xi_text);
+        trow.appendChild(xi);
+
+        let fxi = document.createElement('th');
+        let fxi_text = document.createTextNode(row[2]);
+        fxi.appendChild(fxi_text);
+        trow.appendChild(fxi);
+
+        let E = document.createElement('th');
+        let E_text = document.createTextNode(row[3]);
+        E.appendChild(E_text);
+        trow.appendChild(E);
+
+        tbody.appendChild(trow);
+        table_created = true;
+    });
+}
+
 function newton() {
 
     //let str = 'log(sin(x)^2+1)-(1/2)';//esta es la funcion
@@ -46,13 +75,22 @@ function newton() {
 
     }
     if (fx0 == 0) {
-        console.log("Se encontro una aproximacion de la raiz en " + x0);
+        alert("Se encontro una aproximacion de la raiz en " + x0);
     } else if (error < tol) {
-        console.log("Se encontro una aproximacion de la raiz en " + xn);
+        alert("Se encontro una aproximacion de la raiz en " + xn);
     } else if (dfx0 == 0) {
-        console.log("Acá se pueden presenta casos de raices  multiples");
+        alert("Acá se pueden presenta casos de raices  multiples");
     } else {
-        console.log("El  metodo no encontro el resultado, intente de nuevo");
+        alert("El  metodo no encontro el resultado, intente de nuevo");
+    }
+    if (!table_created) {
+        create_table(data, document.getElementById('table-body'));
+    } else {
+        table.removeChild(document.getElementById('table-body'));
+        let tbody = document.createElement('tbody');
+        tbody.setAttribute("id", "table-body");
+        table.appendChild(tbody);
+        create_table(data, tbody);
     }
     console.table(data);
 }
