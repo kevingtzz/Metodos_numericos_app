@@ -3,10 +3,6 @@ const table = document.getElementById('table');
 
 var table_created = false;
 
-if (window.screen.availWidth > 900) {
-    num_decimals = 6;
-}
-
 button.addEventListener('click', () => {
     incrementales();
 });
