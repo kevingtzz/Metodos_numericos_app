@@ -7,6 +7,35 @@ button.addEventListener('click', () => {
     raicesMultiples();
 });
 
+function create_table(data, tbody) {
+    data.forEach(row => {
+        let trow = document.createElement('tr');
+
+        let i = document.createElement('th');
+        let i_text = document.createTextNode(row[0]);
+        i.appendChild(i_text);
+        trow.appendChild(i);
+
+        let xi = document.createElement('th');
+        let xi_text = document.createTextNode(row[1]);
+        xi.appendChild(xi_text);
+        trow.appendChild(xi);
+
+        let fxi = document.createElement('th');
+        let fxi_text = document.createTextNode(row[2]);
+        fxi.appendChild(fxi_text);
+        trow.appendChild(fxi);
+
+        let E = document.createElement('th');
+        let E_text = document.createTextNode(row[3]);
+        E.appendChild(E_text);
+        trow.appendChild(E);
+
+        tbody.appendChild(trow);
+        table_created = true;
+    });
+}
+
 function raicesMultiples(){
 
     //let str = 'e^x - x - 1';//esta es la funcion
@@ -55,6 +84,15 @@ function raicesMultiples(){
         console.log("Se encontro una aproximacion de la raiz en " + x0);
     } else {
         console.log("El metodo no encontro la solucion");
+    }
+    if (!table_created) {
+        create_table(data, document.getElementById('table-body'));
+    } else {
+        table.removeChild(document.getElementById('table-body'));
+        let tbody = document.createElement('tbody');
+        tbody.setAttribute("id", "table-body");
+        table.appendChild(tbody);
+        create_table(data, tbody);
     }
     console.table(data);
 }

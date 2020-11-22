@@ -75,13 +75,13 @@ function newton() {
 
     }
     if (fx0 == 0) {
-        alert("Se encontro una aproximacion de la raiz en " + x0);
+        alert("Aproximation found in " + x0);
     } else if (error < tol) {
-        alert("Se encontro una aproximacion de la raiz en " + xn);
+        alert("Root aproximation found in " + xn);
     } else if (dfx0 == 0) {
-        alert("Acá se pueden presenta casos de raices  multiples");
+        alert("Posible multiple roots");
     } else {
-        alert("El  metodo no encontro el resultado, intente de nuevo");
+        alert("The method didn't found an aproximation, try again.");
     }
     if (!table_created) {
         create_table(data, document.getElementById('table-body'));
