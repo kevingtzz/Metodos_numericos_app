@@ -3,6 +3,7 @@ const save_btn = document.getElementById('save');
 const button = document.getElementById('start');
 const input_table_a = document.getElementById('input_table_a');
 const input_table_b = document.getElementById('input_table_b');
+const tables_container = document.getElementById('tables');
 
 var input_table_created = false;
 var stage_tables_created = false;
@@ -138,6 +139,13 @@ function sustRegr(M){
 }
 
 function factorizacionLUsimpl(){
+
+    if (stage_tables_created) {
+        tables_container.removeChild(document.getElementById('stage_tables'));
+        let stage_tables = document.createElement('div');
+        stage_tables.setAttribute('id', 'stage_tables');
+        tables_container.appendChild(stage_tables);
+    }
     
     AB = generate_arrays();
       
@@ -200,22 +208,47 @@ function factorizacionLUsimpl(){
         console.log("Etapa " + i);
         console.table(dataM);
 
-        if (!stage_tables_created) {
-            create_process_tables(dataM, i, document.getElementById(`tbody_etapa${i}`));
-            stage_tables_created = true;
-        } else {
-            let table = document.getElementById(`etapa${i}`);
-            table.removeChild(document.getElementById(`tbody_etapa${i}`));
-            let tbody = document.createElement('tbody');
-            tbody.setAttribute('id', `tbody_etapa${i}`);
-            table.appendChild(tbody);
-            create_process_tables(dataM, i, tbody);
-        }
+        let title = document.createElement('h3');
+        title.appendChild(document.createTextNode(`Stage ${i}`));
+        title.classList.add("stage_title");
+        stage_tables.appendChild(title);
+
+        let table = document.createElement('table');
+        let tbody = document.createElement('tbody');
+        tbody.setAttribute("id", `tbody_etapa${i}`);
+        table.appendChild(tbody);
+        stage_tables.appendChild(table);
+        create_process_tables(dataM, i, tbody);
 
         console.log("L: ");
         console.table(dataL);
+
+        let titleL = document.createElement('h3');
+        titleL.appendChild(document.createTextNode(`L ${i}`));
+        titleL.classList.add("stage_title");
+        stage_tables.appendChild(titleL);
+
+        let tableL = document.createElement('table');
+        let tbodyL = document.createElement('tbody');
+        tbodyL.setAttribute("id", `L${i}`);
+        tableL.appendChild(tbodyL);
+        stage_tables.appendChild(tableL);
+        create_process_tables(dataL, i, tbodyL);
+
         console.log("U: ");
         console.table(dataU);
+
+        let titleU = document.createElement('h3');
+        titleU.appendChild(document.createTextNode(`U ${i}`));
+        titleU.classList.add("stage_title");
+        stage_tables.appendChild(titleU);
+
+        let tableU = document.createElement('table');
+        let tbodyU = document.createElement('tbody');
+        tbodyU.setAttribute("id", `U${i}`);
+        tableU.appendChild(tbodyU);
+        stage_tables.appendChild(tableU);
+        create_process_tables(dataU, i, tbodyU);
     }
     let Lb = [];
     Lb = L;
@@ -233,6 +266,18 @@ function factorizacionLUsimpl(){
     console.log("Despues de aplicar sustitucion progresiva y regresiva: ");
     console.log("x: ")
     console.log(x);
+
+    if (!stage_tables_created) {
+        create_res_table(x, document.getElementById('tbody_res'));
+        stage_tables_created = true;
+    } else {
+        let table = document.getElementById('res');
+        table.removeChild(document.getElementById('tbody_res'));
+        let tbody = document.createElement('tbody');
+        tbody.setAttribute('id', 'tbody_res');
+        table.appendChild(tbody);
+        create_res_table(x, tbody);
+    }
 }
 
 function create_process_tables(data, stage, tbody) {
