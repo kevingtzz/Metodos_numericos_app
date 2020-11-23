@@ -141,8 +141,6 @@ function gaussianaSimple(){
         console.log("ETAPA " + i);
         console.table(data);
 
-
-
         let title = document.createElement('h3');
         title.appendChild(document.createTextNode(`Stage ${i}`));
         title.classList.add("stage_title");

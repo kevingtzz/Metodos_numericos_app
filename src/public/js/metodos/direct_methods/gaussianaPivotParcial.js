@@ -3,6 +3,7 @@ const save_btn = document.getElementById('save');
 const button = document.getElementById('start');
 const input_table_a = document.getElementById('input_table_a');
 const input_table_b = document.getElementById('input_table_b');
+const tables_container = document.getElementById('tables');
 
 var input_table_created = false;
 var stage_tables_created = false;
@@ -121,6 +122,13 @@ function cambiarFilas(M, i){
 
 function gaussianaPivotParcial(){
 
+    if (stage_tables_created) {
+        tables_container.removeChild(document.getElementById('stage_tables'));
+        let stage_tables = document.createElement('div');
+        stage_tables.setAttribute('id', 'stage_tables');
+        tables_container.appendChild(stage_tables);
+    }
+
     AB = generate_arrays();
       
     var A = AB[0];
@@ -146,17 +154,17 @@ function gaussianaPivotParcial(){
         }
         console.table(data);
 
-        if (!stage_tables_created) {
-            create_process_tables(data, i, document.getElementById(`tbody_etapa${i}`));
-            stage_tables_created = true;
-        } else {
-            let table = document.getElementById(`etapa${i}`);
-            table.removeChild(document.getElementById(`tbody_etapa${i}`));
-            let tbody = document.createElement('tbody');
-            tbody.setAttribute('id', `tbody_etapa${i}`);
-            table.appendChild(tbody);
-            create_process_tables(data, i, tbody);
-        }
+        let title = document.createElement('h3');
+        title.appendChild(document.createTextNode(`Stage ${i}`));
+        title.classList.add("stage_title");
+        stage_tables.appendChild(title);
+
+        let table = document.createElement('table');
+        let tbody = document.createElement('tbody');
+        tbody.setAttribute("id", `tbody_etapa${i}`);
+        table.appendChild(tbody);
+        stage_tables.appendChild(table);
+        create_process_tables(data, i, tbody);
 
         M = cambiarFilas(M, i);
         for(j = i + 1; j < M.length; j++){
@@ -182,6 +190,7 @@ function gaussianaPivotParcial(){
 
     if (!stage_tables_created) {
         create_res_table(x, document.getElementById('tbody_res'));
+        stage_tables_created = true;
     } else {
         let table = document.getElementById('res');
         table.removeChild(document.getElementById('tbody_res'));
