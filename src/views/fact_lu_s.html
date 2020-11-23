@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/gaussianS.css">
-    <title>Simple Gaussian</title>
+    <title>LU Simple</title>
 </head>
 <body>
-    <h1 class="title">Simple Gaussian Elimination</h1>
+    <h1 class="title">LU Simple Factorization</h1>
     <div class="container">
         <div class="inputs">
             <input type="number" min="2" max="10" required name="size" value="2" placeholder="Matrix size" id="size" class="lil-input input">
@@ -35,31 +35,28 @@
             <div class="liquid"></div>
         </a>
         <div id="tables">
-            <div id="stage_tables"></div>
-            <!-- <h3 class="stage_title">Stage 0</h3>
-            <table id="etapa0">
+            <h3 class="stage_title">Stage 0</h3>
+            <table id="etapa0" class="stage_table">
                 <tbody id="tbody_etapa0"></tbody>
             </table>
             <h3 class="stage_title">Stage 1</h3>
-            <table id="etapa1">
+            <table id="etapa1" class="stage_table">
                 <tbody id="tbody_etapa1"></tbody>
             </table>
             <h3 class="stage_title">Stage 2</h3>
-            <table id="etapa2">
+            <table id="etapa2" class="stage_table">
                 <tbody id="tbody_etapa2"></tbody>
             </table>
             <h3 class="stage_title">Stage 3</h3>
-            <table id="etapa3">
+            <table id="etapa3" class="stage_table">
                 <tbody id="tbody_etapa3"></tbody>
-            </table> -->
-        </div>
-        <div class="res_container">
+            </table>
             <h3 class="stage_title">Result</h3>
-            <table id="res">
+            <table id="res" class="stage_table">
                 <tbody id="tbody_res"></tbody>
             </table>
         </div>
     </div>
-    <script src="./js/metodos/direct_methods/gaussianaSimple.js"></script>
+    <script src="./js/metodos/direct_methods/factorizacionLUsimpl.js"></script>
 </body>
 </html>

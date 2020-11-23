@@ -49,4 +49,8 @@ router.get('/gauss_t', (req, res) => {
     res.sendFile(path.join(config.AppPath, 'src/views/gaussTotal.html'));
 });
 
+router.get('/fact_lu_s', (req, res) => {
+    res.sendFile(path.join(config.AppPath, 'src/views/fact_lu_s.html'));
+});
+
 module.exports = router;

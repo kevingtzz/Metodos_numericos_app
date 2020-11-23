@@ -157,9 +157,13 @@ table, tr, td {
 
 #tables {
     display: grid;
-    grid-template-rows: repeat(10, auto);
+    grid-template-columns: auto;
     margin: auto;
     justify-content: center;
+}
+
+#res {
+    margin: auto;
 }
 
 .stage_title {
