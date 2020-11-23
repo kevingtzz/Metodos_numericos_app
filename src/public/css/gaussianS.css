@@ -64,8 +64,11 @@ table, tr, td {
 
 .input_tables {
     display: grid;
+    grid-template-rows: auto auto;
     grid-template-columns: auto auto;
     margin: auto;
+    text-align: center;
+    margin: 50px auto 30px auto;
 }
 
 .matrix_input {
@@ -150,6 +153,19 @@ table, tr, td {
     border-radius: 40%;
     background: rgba(20,20,20,0.5);
     animation: animate 10s linear infinite;
+}
+
+#tables {
+    display: grid;
+    grid-template-rows: repeat(10, auto);
+    margin: auto;
+    justify-content: center;
+}
+
+.stage_title {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-align: center;
 }
 
 @keyframes animate {

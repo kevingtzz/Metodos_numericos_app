@@ -5,6 +5,7 @@ const input_table_a = document.getElementById('input_table_a');
 const input_table_b = document.getElementById('input_table_b');
 
 var input_table_created = false;
+var stage_tables_created = false;
 var size_generate = 0;
 
 size_btn.addEventListener('click', () => {
@@ -65,6 +66,7 @@ save_btn.addEventListener('click', () => {
     }
 
     generate_arrays();
+    alert('saved!');
 });
 
 function generate_arrays() {
@@ -122,6 +124,17 @@ function gaussianaSimple(){
         }
         console.log("ETAPA " + i);
         console.table(data);
+        if (!stage_tables_created) {
+            create_process_tables(data, i, document.getElementById(`tbody_etapa${i}`));
+            stage_tables_created = true;
+        } else {
+            let table = document.getElementById(`etapa${i}`);
+            table.removeChild(document.getElementById(`tbody_etapa${i}`));
+            let tbody = document.createElement('tbody');
+            tbody.setAttribute('id', `tbody_etapa${i}`);
+            table.appendChild(tbody);
+            create_process_tables(data, i, tbody);
+        }
     }
     x = new Array(A.length);
     for(i = 0; i < x.length; i++){
@@ -136,4 +149,41 @@ function gaussianaSimple(){
     }
     console.log("x: ");
     console.log(x);
+
+    if (!stage_tables_created) {
+        create_res_table(x, document.getElementById('tbody_res'));
+    } else {
+        let table = document.getElementById('res');
+        table.removeChild(document.getElementById('tbody_res'));
+        let tbody = document.createElement('tbody');
+        tbody.setAttribute('id', 'tbody_res');
+        table.appendChild(tbody);
+        create_res_table(x, tbody);
+    }
+}
+
+function create_process_tables(data, stage, tbody) {
+    
+    for (let row = 0; row < data.length; row++) {
+        let input_row = document.createElement('tr');
+        for (let col = 0; col < data[row].length; col++) {
+            let input_col = document.createElement('td');
+            let input = document.createTextNode(data[row][col]);
+            console.log(data[row][col]);
+            input_col.appendChild(input);
+            input_row.appendChild(input_col)
+        }
+        tbody.appendChild(input_row);
+    }
+}
+
+function create_res_table(data, tbody) {
+    let input_row = document.createElement('tr');
+    for (let col = 0; col < data.length; col++) {
+        let input_col = document.createElement('td');
+        let input = document.createTextNode(data[col]);
+        input_col.appendChild(input)
+        input_row.appendChild(input_col);
+    }
+    tbody.appendChild(input_row);
 }
