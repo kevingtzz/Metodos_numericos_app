@@ -312,7 +312,6 @@ function factorizacionLUsimpl(){
         tbodyP.setAttribute("id", `P${i}`);
         tableP.appendChild(tbodyP);
         stage_tables.appendChild(tableP);
-        console.log('PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP')
         create_process_tables(dataP, i, tbodyP);
     }
     let Lb = [];
