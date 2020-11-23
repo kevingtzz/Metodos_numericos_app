@@ -128,3 +128,29 @@ function round(num, decimales = 2) {
     num = num.toString().split('e');
     return signo * (num[0] + 'e' + (num[1] ? (+num[1] - decimales) : -decimales));
 }
+
+var parameters = {
+    target: '#myFunction',
+    data: [{
+      fn: 'sin(x)', 
+   }],
+    grid: true,
+    yAxis: {domain: [-1, 1]},
+    xAxis: {domain: [0, 2*Math.PI]}
+};
+  
+function plot() {
+    var aus = "";
+    aus = document.getElementById('function').value;
+    var fu = aus.replaceAll('e','2.718281828459045');
+    var xMin = document.querySelector("#xMin").value;
+    var xMax = document.querySelector("#xMax").value;
+    var yMin = document.querySelector("#yMin").value;
+    var yMax = document.querySelector("#yMax").value;
+    
+    parameters.data[0].fn = fu;
+    parameters.xAxis.domain = [xMin, xMax];
+    parameters.yAxis.domain = [yMin, yMax];
+    
+    functionPlot(parameters);
+}
