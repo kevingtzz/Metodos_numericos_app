@@ -55,21 +55,21 @@
     top: -20px;
     width: 100px;
     height: 200px;
-    background: #00babf;
+    background: #07bfe1;
     box-shadow: inset 0 0 50px rgba(0,0,0,.5);
     transition: 0.5s;
 }
 
 .liquid-close {
-    background: #004f7e !important;
+    background: #72cef0 !important;
 }
 
 .liquid-open {
-    background: #00786f !important;
+    background: #6ad192 !important;
 }
 
 .liquid-direct {
-    background: #9c1f4f !important;
+    background: #00786f !important;
 }
 
 .buttons a:hover .liquid {

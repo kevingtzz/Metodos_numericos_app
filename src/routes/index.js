@@ -38,7 +38,7 @@ router.get('/multi_root', (req, res) => {
 });
 
 router.get('/gauss_s', (req, res) => {
-    res.sendFile(path.join(config.AppPath, 'src/views/multi_root.html'));
+    res.sendFile(path.join(config.AppPath, 'src/views/gaussSimple.html'));
 });
 
 module.exports = router;
