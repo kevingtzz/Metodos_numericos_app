@@ -168,6 +168,10 @@ table, tr, td {
     text-align: center;
 }
 
+.stage_table {
+    min-width: 100%;
+}
+
 @keyframes animate {
     0% {
         transform: translate(-50%, -75%) rotate(0deg);

@@ -41,4 +41,8 @@ router.get('/gauss_s', (req, res) => {
     res.sendFile(path.join(config.AppPath, 'src/views/gaussSimple.html'));
 });
 
+router.get('/gauss_p', (req, res) => {
+    res.sendFile(path.join(config.AppPath, 'src/views/gaussParcial.html'));
+});
+
 module.exports = router;

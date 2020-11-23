@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/gaussianS.css">
+    <title>Parcial Gaussian</title>
+</head>
+<body>
+    <h1 class="title">Parcial Gaussian Elimination</h1>
+    <div class="container">
+        <div class="inputs">
+            <input type="number" min="2" max="10" required name="size" value="2" placeholder="Matrix size" id="size" class="lil-input input">
+            <a href="#" id="size_btn">
+                <span>Set size</span>
+                <div class="liquid liquid_size"></div>
+            </a>
+            <div class="input_tables">
+                <h3>A</h3>
+                <h3>B</h3>
+                <table id="input_table_a">
+                    <tbody id="tbody_a"></tbody>
+                </table>
+                <table id="input_table_b">
+                    <tbody id="tbody_b"></tbody>
+                </table>
+            </div>
+        </div>
+        <a href="#" id="save">
+            <span>Save</span>
+            <div class="liquid liquid_save"></div>
+        </a>
+        <a href="#" id="start">
+            <span>start</span>
+            <div class="liquid"></div>
+        </a>
+        <div id="tables">
+            <h3 class="stage_title">Stage 0</h3>
+            <table id="etapa0" class="stage_table">
+                <tbody id="tbody_etapa0"></tbody>
+            </table>
+            <h3 class="stage_title">Stage 1</h3>
+            <table id="etapa1" class="stage_table">
+                <tbody id="tbody_etapa1"></tbody>
+            </table>
+            <h3 class="stage_title">Stage 2</h3>
+            <table id="etapa2" class="stage_table">
+                <tbody id="tbody_etapa2"></tbody>
+            </table>
+            <h3 class="stage_title">Stage 3</h3>
+            <table id="etapa3" class="stage_table">
+                <tbody id="tbody_etapa3"></tbody>
+            </table>
+            <h3 class="stage_title">Result</h3>
+            <table id="res" class="stage_table">
+                <tbody id="tbody_res"></tbody>
+            </table>
+        </div>
+    </div>
+    <script src="./js/metodos/direct_methods/gaussianaPivotParcial.js"></script>
+</body>
+</html>
