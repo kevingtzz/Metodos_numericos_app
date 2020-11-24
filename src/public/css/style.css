@@ -76,6 +76,10 @@
     background: #ffd468 !important;
 }
 
+.liquid-interpolation {
+    background: #fd8f66 !important;
+}
+
 .buttons a:hover .liquid {
     top: -80px;
 }

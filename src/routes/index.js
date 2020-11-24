@@ -69,4 +69,8 @@ router.get('/sor', (req, res) => {
     res.sendFile(path.join(config.AppPath, 'src/views/sor.html'));
 });
 
+router.get('/lagrange', (req, res) => {
+    res.sendFile(path.join(config.AppPath, 'src/views/lagrange.html'));
+});
+
 module.exports = router;
