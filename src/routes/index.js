@@ -81,4 +81,16 @@ router.get('/vander', (req, res) => {
     res.sendFile(path.join(config.AppPath, 'src/views/vander.html'));
 });
 
+router.get('/trazlin', (req, res) => {
+    res.sendFile(path.join(config.AppPath, 'src/views/trazlin.html'));
+});
+
+router.get('/trazcuad', (req, res) => {
+    res.sendFile(path.join(config.AppPath, 'src/views/trazcuad.html'));
+});
+
+router.get('/trazcub', (req, res) => {
+    res.sendFile(path.join(config.AppPath, 'src/views/trazcub.html'));
+});
+
 module.exports = router;

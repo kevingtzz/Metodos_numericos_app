@@ -80,12 +80,8 @@ button.addEventListener('click', () => {
     console.log("Resultados: \n");
     console.log("Polinomios interpolantes de Lagrange: ");
 
-    let X = XY[0]
-    let Y = XY[1]
-    if(X.length != Y.length){
-        alert("X y Y deben tener el mismo tamaño");
-        return("Error");
-    }
+    let X = XY[0];
+    let Y = XY[1];
     let pol = "";
     let valordeabajo = 1;
     for(let i = 0; i < X.length; i++){
@@ -104,13 +100,15 @@ button.addEventListener('click', () => {
         str = str + (" / (" + valordeabajo + ")");
         valordeabajo = 1;
         console.log("L" + i + ":" + str);
+        
         let title = "L" + i + ":" + str;
-        pol = pol + ((Y[i] > 0 && i != 0) ? " + " : " ") + "(" + Y[i] + " * " + "L" + i + ")";
         let container = document.getElementById('results');
         let title_pol = document.createElement('h4');
         let tilte_pol_txt = document.createTextNode(title);
         title_pol.appendChild(tilte_pol_txt);
         container.appendChild(title_pol);
+
+        pol = pol + ((Y[i] > 0 && i != 0) ? " + " : " ") + "(" + Y[i] + " * " + "L" + i + ")";
     }
     console.log("");
     console.log("Polinomio: ");

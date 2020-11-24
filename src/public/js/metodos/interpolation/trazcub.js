@@ -184,7 +184,8 @@ function trazCub(){
         if(bes[i] >= 0){
             if(ces[i] >= 0){
                 if(des[i] >= 0){
-                    console.log(as[i] + "x^3 + " + bes[i] + "x^2 + " + ces[i] + "x + " + des[i]);
+                    let tra = as[i] + "x^3 + " + bes[i] + "x^2 + " + ces[i] + "x + " + des[i]
+                    console.log(traz);
                 } else {
                     console.log(as[i] + "x^3 + " + bes[i] + "x^2 + " + ces[i] + "x " + des[i]);
                 }
