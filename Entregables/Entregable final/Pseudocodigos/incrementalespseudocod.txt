@@ -1,0 +1,29 @@
+//Autor Santiago Albisser
+//Metodos 
+
+Leer funcion, x0, delta, niter
+
+fx0= f(x0)
+
+Si (fx0 = 0)
+    imprimir x0
+Sino
+    x1= x0+delta
+    cont = 0
+    fx1 = f(x1)
+    Mientras (cont <niter)
+        Si (fx0 *fx1 < 0)
+            Si (fx1= 0)
+                funcion1= x1
+                imprimir x1 es una raiz 
+            Si no
+                funcion1= x0+x1 
+                imprimir hay una raiz entre x0 y x1
+        fin si
+        x0 =x1
+        fx0=fx1 
+        x1= x0+delta
+        fx1= f(x1)
+        cont = cont+1
+    fin mientras 
+fin si

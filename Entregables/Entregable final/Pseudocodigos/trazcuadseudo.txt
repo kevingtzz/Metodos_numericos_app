@@ -1,0 +1,84 @@
+//Autor Santiago Albisser
+//Metodo Traz cuad
+
+Leer X, Y
+
+len = 3*(Longitud(X)-1)
+
+Mientras que(i<Len)
+    b[i]=0
+fin mientras que
+Mientras que(i<Longitud(A))
+    Mientras que(j<Longitud(A))
+        A[i][j]= 0
+    fin mientras que
+fin mientras que
+A[0][0] = Math.pow(X[0], 2);
+A[0][1] = X[0]
+A[0][2] = 1
+b[0] = Y[0]
+let aux = 0
+let auxilio = 0
+Mientras que (i<Longitud(X))
+    Mientras que(j<Longitud(A))
+        Si(((i * 3) - 3) == j)
+            A[i][j] = Math.pow(X[i], 2)
+        fin si
+    fin mientras que
+    Mientras que (j<Longitud(A))
+        Si(((i * 3) - 2) == j)
+            A[i][j] = X[i]
+        fin si
+    fin mientras que
+    Mientras que (j<Longitud(A))
+        Si (((i * 3) - 2) == j)
+            A[i][j] = X[i]
+        fin si
+    fin mientras que
+    Mientras que(j<Longitud(A))
+        Si(((i * 3) - 1) == j)
+            A[i][j]= 1
+        fin si
+    fin mientras que
+    b[i] = Y[i]
+    auxilio = i
+fin mientras que
+aux = auxilio
+Mientras que (i<len-aux)
+    Mientras que (j<len)
+        Si(((3 * i) - (3 * (aux + 1))) == j)
+            A[i][j] = Math.pow(X[i - aux],2)
+        fin si
+        Si (((3 * i) - (3 * (aux + 1)) + 1) == j)
+            A[i][j] = X[i - aux]
+        fin si
+        Si (((3 * i) - (3 * (aux + 1)) + 2) == j)
+            A[i][j] = 1
+        fin si
+        Si (((3 * i) - (3 * (aux + 1)) + 3) == j)
+            Si((X[i - aux] != 0))
+                A[i][j] = -Math.pow(X[i - aux],2)
+            si no 
+                A[i][j] = Math.pow(X[i - aux],2)
+            fin si
+        fin si
+        Si (((3 * i) - (3 * (aux + 1)) + 4) == j)
+            Si(X[i - aux] != 0)
+                A[i][j] = -X[i - aux]
+            Si no
+                 A[i][j] = X[i - aux]
+            fin si
+        fin si
+        Si (((3 * i) - (3 * (aux + 1)) + 5) == j)
+            A[i][j] = -1
+        fin si
+    fin mientras que
+    auxilio = i
+fin mientras que
+aux = auxilio
+Mientras que (i<len)
+    A[i][0] = 2
+fin mientras que
+x = solve(A, b)
+Imprimir Trazadores cuadraticos
+Imprimir Coeficientes de los trazadores

@@ -1,0 +1,25 @@
+//Autor Santiago Albisser
+//Metodo Gaussiana Simple
+
+Leer A,b 
+
+Mientras que (i< Longitud(M))
+    Mientras que (j<Longitud(M))
+        divisor = M[j][i] / M[i][i]
+        Mientras que
+            M[j][k] = (M[j][k] - (divisor * M[i][k]))
+        fin mientras que
+    fin mientras que
+    Imprimir etapa + i
+fin mientras que
+x= nuevo Arreglo(Longitud(A))
+Mientras que(i<Longitud(X))
+    x[i] = 0
+fin mientras que
+Mientras que (i>= 0)
+    sum= 0
+    Mientras que (j<Longitud(M))
+        sum = sum + (M[i][j - 1] * x[j - 1])
+    fin  mientras que
+    x[i] = new Array(((M[i][M.length] - sum) / (M[i][i]))
+fin mientras que

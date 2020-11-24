@@ -1,0 +1,37 @@
+//Autor Santiago Albisser
+//Metodo Factorizacion Lu
+
+Leer A,b
+
+L = identidad(Longitud(A))
+U = identidad(Longitud(A))
+M = A
+
+Mientras que (i<Longitud(M))
+    Imprimir Etapa + i
+    Imprimir L
+    Si (i+1 != Longitud(M))
+        Imprimir U
+    Fin Si
+    Si (|M[aux][i]| < |M[f][i]|)
+        cambiarFilas(i, aux)
+    fin Si
+    Mientras que (j<Longitud(M))
+        divisor = M[j][i] / M[i][i]
+        Mientras que (k<Longitud(M))
+          M[j][k] = (M[j][k] - (divisor * M[i][k]))
+        fin mientras que
+    fin mientras que  
+    Mientras que(j<Longitud(M))
+        U[i][j] = M[i][j];
+    fin mientras que
+    si (i+1 = Longitud(M))
+        Imprimir U
+    fin si
+    imprimir P
+fin mientras que
+z = sustprogr(L b)
+x = sustregr(U z)
+imprimir x
+
+

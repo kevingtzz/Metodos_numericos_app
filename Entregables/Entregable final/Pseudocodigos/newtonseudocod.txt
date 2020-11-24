@@ -1,0 +1,29 @@
+//Autor Santiago Albisser
+//Metodo Newton
+
+Leer funcion, x0,niter, tol
+dfx= df(funcion,x)
+
+fx0=f(x0)
+dfx0= df(x0)
+contador= 0
+error = tol +1 
+
+mientras ((error > tol) && (fx0 != 0) && (dfx0 != 0) && (contador < niter))
+    xn= x0-(fx0/dfx0)
+    fx0= f(xn)
+    dfx0 = dfx(xn)
+    error =|xn-x0|
+    x0 = xn
+    contador = contador +1
+    Si (fx0 = 0)
+        imprimir "Se encontro una aproximacion de la raiz en " + x0
+    Sino(Error<tol)
+        imprimir "Se encontro una aproximacion de la raiz en " + xn
+    sino(dfx0=0)
+        imprimir "Acá se pueden presenta casos de raices  multiples"
+    si no
+        imprimir "El  metodo no encontro el resultado, intente de nuevo"
+    fin si
+fin mientras
+

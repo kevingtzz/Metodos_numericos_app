@@ -1,0 +1,39 @@
+//Autor Santiago Albisser
+//Metodo Jacobi
+
+Leer  A,b, x0, tol, Nmax
+x1= arreglo(Longitud(X0))
+
+D= Diagonal(A)
+L =DiagonalInferior(A)
+U = DiagonalSuperior(A)
+DI= Inversa(D)
+LU =L+U
+T= DI * LU
+C= DI* b
+error = 1
+cont = 0
+
+Mientras que (i<Longitud(X0))
+    x0[i] = x0[i]
+fin mientras que
+Mientras ((cont < Nmax) && (error > tol))
+    Mientras que( i<Longitud(x0))
+        sum=0
+        Mientras que(j<Longitud(x0))
+            sum = sum + (T[i][j] * x0[j])
+        fin mientras que
+        x1[i] = (sum + C[i][0])
+    fin mientras que
+    suma = 0
+    Mientras que (i<Longitud(X1))
+        suma= suma +  (Math.pow(|(x1[i] - x0[i])|,2))
+    fin mientras que
+    error = RaizCuadrada(Suma)
+    cont= cont+1
+    x0 =x1
+    x1= new Array(Longitud(x0))
+fin mientras
+imprimir T
+imprimir C
+imprimir Radio espectral

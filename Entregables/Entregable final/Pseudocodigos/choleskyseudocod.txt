@@ -1,0 +1,40 @@
+//Autor Santiago
+//Metodo de Cholesky
+
+leer A,b
+
+L = identidad(Longitud(A))
+U = identidad(Longitud(A))
+
+Mientras que (i < Longitud(A))
+    sum = 0
+    Mientras que (j<i)
+        sum = sum + (L[i][j] * U[j][i])
+    fin mientras que
+// condicion if? linea 83 
+    L[i][i] = U[i][i]
+    Mientras que (j< Longitud(A))
+        sum = 0
+        Mientras que (k<i)
+            sum = sum + (L[j][k] * U[k][i])
+        fin mientras que
+        L[j][i] = ((A[j][i] - sum)/(L[i][i]))
+    Fin mientras que
+    Mientras que (j<Longitud(A))
+        sum = 0
+        mientras que (k<i)
+            sum = sum + (L[i][k] * U[k][j])
+        fin mientras que
+         U[i][j] = ((A[i][j] - sum)/(L[i][i]))
+    fin mientras que
+    Imprimir L
+    Imprimir U
+fin mientras que
+z = sustprogr(L b)
+x = sustregr(U z)
+imprimir x
+
+
+    
+
+

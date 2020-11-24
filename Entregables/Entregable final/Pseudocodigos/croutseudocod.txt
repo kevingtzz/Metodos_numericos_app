@@ -1,0 +1,39 @@
+//Autor Santiago Albisser
+//Metodo crout
+
+Leer A,b
+
+Mientras que (i< Longitud(A))
+    Mientras que (j< Longitud(A))
+        A[i][j] = A[i][j]
+        Si(i=j)
+            L[i][j] = 1
+            U[i][j] = 1;
+        Si no
+            L[i][j] = 0;
+            U[i][j] = 0;
+        fin Si
+    fin mientras que
+fin mientras que
+Imprimir etapa 0
+Mientras que (i< Longitud(A))
+    imprimir etapa + i
+    sum = 0
+    mientras que (j<i-1)
+        sum = sum + (L[i - 1][j] * U[j][i - 1])
+    fin mientras que
+    L[i - 1][i - 1] = (A[i - 1][i - 1] - sum)
+    Mientras que (j<Longitud(A))
+        sum = 0
+        Mientras que (k < i-1)
+            sum = sum + L[i - 1][k] * U[k][j - 1]
+        fin mientras que
+        U[i - 1][j - 1] = ((A[i - 1][j - 1] - sum) / (L[i - 1][i - 1]))
+    fin mientras que
+    Imprimir L
+    imprimir U
+fin mientras que
+
+z = sustprogr(L b)
+x = sustregr(U z)
+imprimir x
