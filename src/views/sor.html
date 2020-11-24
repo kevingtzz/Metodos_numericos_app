@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/gaussianS.css">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/ml-matrix@6.5.3/matrix.umd.min.js"></script>
+    <title>SOR</title>
+</head>
+<body>
+    <h1 class="title">SOR</h1>
+    <div class="container">
+        <div class="inputs">
+            <input type="number" min="2" max="10" required name="size" value="2" placeholder="Matrix size" id="size" class="lil-input input">
+            <a href="#" id="size_btn">
+                <span>Set size</span>
+                <div class="liquid liquid_size"></div>
+            </a>
+            <div class="input_tables">
+                <h3>A</h3>
+                <h3>B</h3>
+                <table id="input_table_a">
+                    <tbody id="tbody_a"></tbody>
+                </table>
+                <table id="input_table_b">
+                    <tbody id="tbody_b"></tbody>
+                </table>
+                <h3>x0</h3>
+                <div class="inputs_container">
+                    <h3>Tolerance</h3>
+                    <h3>Iterations</h3>
+                    <input type="number" min="0" step="any" name="tolerance" placeholder="tolerance" id="tolerance" class="lil-input input">
+                    <input type="number" min="1" name="iterations" placeholder="iterations" id="iterations" class="lil-input input">
+                    <h3>W</h3>
+                    <input type="number" min="0" step="any" name="w" placeholder="W" id="w" class="lil-input input">
+                </div>
+                <table id="input_table_x0">
+                    <tbody id="tbody_x0"></tbody>
+                </table>
+            </div>
+        </div>
+        <a href="#" id="save">
+            <span>Save</span>
+            <div class="liquid liquid_save"></div>
+        </a>
+        <a href="#" id="start">
+            <span>start</span>
+            <div class="liquid"></div>
+        </a>
+        <div id="tables">
+            <div id="stage_tables"></div>
+        </div>
+    </div>
+    <script src="./js/metodos/iterative_methods/sor.js"></script>
+</body>
+</html>

@@ -1,4 +1,137 @@
-const { max } = require('mathjs');
+const size_btn = document.getElementById('size_btn');
+const save_btn = document.getElementById('save');
+const button = document.getElementById('start');
+const input_table_a = document.getElementById('input_table_a');
+const input_table_b = document.getElementById('input_table_b');
+const input_table_x0 = document.getElementById('input_table_x0');
+const tables_container = document.getElementById('tables');
+
+
+var input_table_created = false;
+var stage_tables_created = false;
+var size_generate = 0;
+
+size_btn.addEventListener('click', () => {
+    let size = document.getElementById('size').value;
+    
+    if (!input_table_created) {
+        let tbody_a = document.getElementById('tbody_a');
+        let tbody_b = document.getElementById('tbody_b');
+        let tbody_x0 = document.getElementById('tbody_x0');
+        create_input_table(tbody_a, tbody_b, tbody_x0, size);
+    } else {
+        size_generate = 0;
+        input_table_a.removeChild(document.getElementById('tbody_a'));
+        input_table_b.removeChild(document.getElementById('tbody_b'));
+        input_table_x0.removeChild(document.getElementById('tbody_x0'));
+        let tbody_a = document.createElement('tbody');
+        let tbody_b = document.createElement('tbody');
+        let tbody_x0 = document.createElement('tbody');
+        tbody_a.setAttribute('id', 'tbody_a');
+        tbody_b.setAttribute('id', 'tbody_b');
+        tbody_x0.setAttribute('id', 'tbody_x0');
+        input_table_a.appendChild(tbody_a);
+        input_table_b.appendChild(tbody_b);
+        input_table_x0.appendChild(tbody_x0);
+        create_input_table(tbody_a, tbody_b, tbody_x0, size);
+    }
+});
+
+function create_input_table(tbody_a, tbody_b, tbody_x0, size) {
+
+    for (let row = 0; row < size; row++) {
+        let input_row = document.createElement('tr');
+        for (let col = 0; col < size; col++) {
+            let input_col = document.createElement('td');
+            let input = document.createElement('input');
+            input.classList.add('matrix_input');
+            input.setAttribute('placeholder', `a${row}${col}`);
+            input_col.appendChild(input);
+            input_row.appendChild(input_col);
+        }
+        size_generate++;
+        tbody_a.appendChild(input_row);
+    }
+
+    for (let row = 0; row < size; row++) {
+        let input_row = document.createElement('tr');
+        let input_col = document.createElement('td');
+        let input = document.createElement('input');
+        input.classList.add('matrix_input');
+        input.setAttribute('placeholder', `b${row}`);
+        input_col.appendChild(input);
+        input_row.appendChild(input_col);
+        tbody_b.appendChild(input_row);
+    }
+
+    for (let row = 0; row < size; row++) {
+        let input_row = document.createElement('tr');
+        let input_col = document.createElement('td');
+        let input = document.createElement('input');
+        input.classList.add('matrix_input');
+        input.setAttribute('placeholder', `x0 ${row}`);
+        input_col.appendChild(input);
+        input_row.appendChild(input_col);
+        tbody_x0.appendChild(input_row);
+    }
+
+    input_table_created = true;
+    console.log(size_generate);
+}
+
+save_btn.addEventListener('click', () => {
+    if (!input_table_created) {
+        alert('Set the matrix before save');
+    }
+
+    generate_arrays();
+    alert('saved!');
+});
+
+function generate_arrays() {
+    let a = [];
+    let b = [];
+    let x0 = [];
+
+    let rows_a = document.getElementById('tbody_a').childNodes;
+    let rows_b = document.getElementById('tbody_b').childNodes;
+    let rows_x0 = document.getElementById('tbody_x0').childNodes;
+
+    for (let row = 0; row < rows_a.length; row++) {
+        let cols = rows_a[row].childNodes;
+        let a_row = [];
+        for (let col = 0; col < cols.length; col++) {
+            if (isNaN(parseFloat(cols[col].firstChild.value))) {
+                a_row.push(0);
+            } else {
+                a_row.push(parseFloat(cols[col].firstChild.value));
+            }
+        }
+        a.push(a_row);
+    }
+
+    for (let row = 0; row < rows_b.length; row++) {
+        if (isNaN(parseFloat(rows_b[row].firstChild.firstChild.value))) {
+            b.push(0);
+        } else {
+            b.push([parseFloat(rows_b[row].firstChild.firstChild.value)]);
+        }
+    }
+
+    for (let row = 0; row < rows_x0.length; row++) {
+        if (isNaN(parseFloat(rows_x0[row].firstChild.firstChild.value))) {
+            x0.push(0);
+        } else {
+            x0.push(parseFloat(rows_x0[row].firstChild.firstChild.value))
+        }
+    }
+
+    return [a, b, x0];
+}
+
+button.addEventListener('click', () => {
+    sor();
+});
 
 function hallarInversa(A){
     let I = [];
@@ -154,15 +287,24 @@ function multiplicarMatrizPorConstante(A, y){
 
 function sor(){
     //una wea
-    var mama = require('ml-matrix');//usa libreria
+    //var mama = require('ml-matrix');//usa libreria
+    if (stage_tables_created) {
+        tables_container.removeChild(document.getElementById('stage_tables'));
+        let stage_tables = document.createElement('div');
+        stage_tables.setAttribute('id', 'stage_tables');
+        tables_container.appendChild(stage_tables);
+    }
+
+    AB = generate_arrays();
+
     let data = [];
-    let A = [[4, -1, 0, 3], [1, 15.5, 3, 8], [0, -1.3, -4, 1.1], [14, 5, -2, 30]];//entrada
-    let b = [[1], [1], [1], [1]];//entrada
-    let w = 1.5;//entrada
-    let x0 = [0, 0, 0, 0];//entrada
+    var A = AB[0];
+    var b = AB[1];
+    let w = parseFloat(document.getElementById('w').value);
+    let x0 = AB[2];//entrada
     let x1 = new Array(x0.length);
-    let tol = 0.0000001;//entrada
-    let Nmax = 100;//entrada
+    let tol = parseFloat(document.getElementById('tolerance').value);
+    let Nmax = document.getElementById('iterations').value;
     for(let i = 0; i < A.length;i++){
         if(A.length != A[i].length){
             alert("La matriz A debe ser cuadrada");
@@ -225,31 +367,87 @@ function sor(){
         x1 = new Array(x0.length);
     }
     console.table(data);
+
+    let title = document.createElement('h3');
+    title.appendChild(document.createTextNode(`Results`));
+    title.classList.add("stage_title");
+    stage_tables.appendChild(title);
+
+    let table = document.createElement('table');
+    table.classList.add("table");
+    let tbody = document.createElement('tbody');
+    tbody.setAttribute("id", `tbody_results`);
+    table.appendChild(tbody);
+    stage_tables.appendChild(table);
+    create_result_table(data, tbody);
+
     let matrizT = imprimirMatriz(T);
     console.log("T: ");
     console.table(matrizT);
+
+    let titlet = document.createElement('h3');
+    titlet.appendChild(document.createTextNode(`T`));
+    titlet.classList.add("stage_title");
+    stage_tables.appendChild(titlet);
+
+    let tablet = document.createElement('table');
+    tablet.classList.add("table");
+    let tbodyt = document.createElement('tbody');
+    tbodyt.setAttribute("id", `tbody_t`);
+    tablet.appendChild(tbodyt);
+    stage_tables.appendChild(tablet);
+    create_result_table(matrizT, tbodyt);
+
     let matrizC = imprimirMatriz(C);
     console.log("C: ");
     console.table(matrizC);
-    console.log("Radio espectral: ");
-    var e = new mama.EigenvalueDecomposition(T);
-    var aba = e.imaginaryEigenvalues;
-    var ebe = e.realEigenvalues;
-    let prueba = false;
-    for(let i = 0; i < ebe.length; i++){
-        if(ebe[i] != 0){
-            prueba = true;
-            break;
-        }
-    }
-    if(prueba){
-        console.warn("Los valores propios de la matriz T son numeros complejos. Este lenguaje no lo soporta");
-        return ("Error");
-    }
-    for(let i = 0; i < aba.length; i++){
-        ebe[i] = Math.abs(ebe[i]);
-    }
-    console.log(max(ebe));
+
+    let titlec = document.createElement('h3');
+    titlec.appendChild(document.createTextNode(`C`));
+    titlec.classList.add("stage_title");
+    stage_tables.appendChild(titlec);
+
+    let tablec = document.createElement('table');
+    tablec.classList.add("table");
+    let tbodyc = document.createElement('tbody');
+    tbodyc.setAttribute("id", `tbody_c`);
+    tablec.appendChild(tbodyc);
+    stage_tables.appendChild(tablec);
+    create_result_table(matrizC, tbodyc);
+
+    // console.log("Radio espectral: ");
+    // var e = new mama.EigenvalueDecomposition(T);
+    // var aba = e.imaginaryEigenvalues;
+    // var ebe = e.realEigenvalues;
+    // let prueba = false;
+    // for(let i = 0; i < ebe.length; i++){
+    //     if(ebe[i] != 0){
+    //         prueba = true;
+    //         break;
+    //     }
+    // }
+    // if(prueba){
+    //     console.warn("Los valores propios de la matriz T son numeros complejos. Este lenguaje no lo soporta");
+    //     return ("Error");
+    // }
+    // for(let i = 0; i < aba.length; i++){
+    //     ebe[i] = Math.abs(ebe[i]);
+    // }
+    // console.log(max(ebe));
 }
 
-sor()
+function create_result_table(data, tbody) {
+    
+    for (let row = 0; row < data.length; row++) {
+        let t_row = document.createElement('tr');
+        for (let col = 0; col < data[row].length; col++) {
+            let t_col = document.createElement('td');
+            let iter = document.createElement('span');
+            let iter_text = document.createTextNode(data[row][col]);
+            iter.appendChild(iter_text);
+            t_col.appendChild(iter);
+            t_row.appendChild(t_col);
+        }
+        tbody.appendChild(t_row);
+    }
+}
