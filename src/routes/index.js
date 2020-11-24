@@ -61,4 +61,8 @@ router.get('/seidel', (req, res) => {
     res.sendFile(path.join(config.AppPath, 'src/views/seidel.html'));
 });
 
+router.get('/jacobi', (req, res) => {
+    res.sendFile(path.join(config.AppPath, 'src/views/jacobi.html'));
+});
+
 module.exports = router;
