@@ -14,6 +14,11 @@ body {
     padding: 20px;
 }
 
+h2, h4 { 
+    margin: auto;
+    text-align: center;
+}
+
 .container {
     display: grid;
     gap: 8px;
@@ -182,6 +187,22 @@ table, tr, td {
 
 .stage_table {
     min-width: 100%;
+}
+
+#results {
+    justify-content: center;
+}
+
+.pol {
+    margin: auto;
+}
+
+.container {
+    justify-content: center;
+}
+
+#container {
+    justify-content: center;
 }
 
 @keyframes animate {

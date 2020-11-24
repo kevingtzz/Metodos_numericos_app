@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/gaussianS.css">
-    <title>Lagrange</title>
+    <title>Newton Inter</title>
 </head>
 <body>
-    <h1 class="title">Lagrange</h1>
-    <div class="container" id="container">
+    <h1 class="title">Newton Interpolation</h1>
+    <div class="container">
         <div class="inputs">
             <input type="number" min="2" max="10" required name="size" value="2" placeholder="Matrix size" id="size" class="lil-input input">
             <a href="#" id="size_btn">
@@ -25,11 +25,13 @@
             <span>start</span>
             <div class="liquid"></div>
         </a>
-        <h2>interpolating polynomials</h2>
-        <div id="results"></div>
-        <h2>Polynomial</h2>
+        <h2>Divided differences</h2>
+        <table id="div_table"></table>
+        <h2>Coeficients</h2>
+        <table id="co_table"></table>
+        <h2>Newton Polynomial</h2>
         <div id="poli"></div>
     </div>
-    <script src="./js/metodos/interpolation/lagrange.js"></script>
+    <script src="./js/metodos/interpolation/newtonInterpolacion.js"></script>
 </body>
 </html>
