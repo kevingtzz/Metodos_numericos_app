@@ -171,6 +171,13 @@ function trazLin(){
             container.appendChild(title_pol);
         } else {
             console.log(as[i] + "x " + bes[i]);
+
+            let pol = as[i] + "x " + bes[i];
+            let container = document.getElementById('poli');
+            let title_pol = document.createElement('h4');
+            let tilte_pol_txt = document.createTextNode(pol);
+            title_pol.appendChild(tilte_pol_txt);
+            container.appendChild(title_pol);
         }
         
     }
