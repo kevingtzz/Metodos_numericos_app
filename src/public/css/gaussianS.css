@@ -201,6 +201,10 @@ table, tr, td {
     justify-content: center;
 }
 
+#container {
+    justify-content: center;
+}
+
 @keyframes animate {
     0% {
         transform: translate(-50%, -75%) rotate(0deg);
