@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/gaussianS.css">
+    <title>Vandermonde</title>
+</head>
+<body>
+    <h1 class="title">Vandermonde</h1>
+    <div class="container">
+        <div class="inputs">
+            <input type="number" min="2" max="10" required name="size" value="2" placeholder="Matrix size" id="size" class="lil-input input">
+            <a href="#" id="size_btn">
+                <span>Set size</span>
+                <div class="liquid liquid_size"></div>
+            </a>
+            <table id="input_table"></table>
+        </div>
+        <a href="#" id="save">
+            <span>Save</span>
+            <div class="liquid liquid_save"></div>
+        </a>
+        <a href="#" id="start">
+            <span>start</span>
+            <div class="liquid"></div>
+        </a>
+        <h2>Vandermonde Table</h2>
+        <table id="div_table"></table>
+        <h2>Coeficients</h2>
+        <div id="co_pol"></div>
+        <h2>Polynomial</h2>
+        <div id="poli"></div>
+    </div>
+    <script src="./js/metodos/interpolation/vandermonde.js"></script>
+</body>
+</html>

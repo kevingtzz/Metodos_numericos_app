@@ -77,4 +77,8 @@ router.get('/new_inter', (req, res) => {
     res.sendFile(path.join(config.AppPath, 'src/views/new_inter.html'));
 });
 
+router.get('/vander', (req, res) => {
+    res.sendFile(path.join(config.AppPath, 'src/views/vander.html'));
+});
+
 module.exports = router;
