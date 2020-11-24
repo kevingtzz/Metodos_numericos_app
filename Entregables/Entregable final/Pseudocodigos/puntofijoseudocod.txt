@@ -1,0 +1,24 @@
+//Autor Santiago Albisser
+//Metodo punto fijo
+
+Leer funcionf, funciong,x0,niter,tol
+
+contador= 0
+error = tol+1 
+fx=funcionf(x0)
+
+Mientras((fx!=0) && (error>tol )&& (contador<niter))
+    xn=funciong(x0)
+    fx=funciong(xn)
+    eror= |xn-x0|
+    x0=xn
+    contador = contador+1
+fin mientras
+Si (fx0 = 0)
+    imprimir "Se encontro una aproximacion de la raiz en " + x0
+Sino(Error<tol)
+    imprimir "Se encontro una aproximacion de la raiz en " + x0
+Sino 
+imprimir El metodo no encontro el resultado 
+fin si
+imprimir x0

@@ -1,0 +1,64 @@
+//Autor Santiago Albisser
+//Metodo Trazlin
+
+Leer X, Y, 
+len = 2 *(Longitud(X)-1)
+
+Mientras que( i<Len)
+    b[i]= 0
+fin mientras que
+Mientras que (i<Longitud(A))
+    Mientras que(j<Longitud(A))
+    A[i][j] = 0
+    fin mientras que
+fin mientras que
+A[0][0] = X[0]
+A[0][1] = 1
+b[0] = Y[0]
+aux = 0
+
+Mientras que (i<Longitud(X))
+    mientras que (j<Longitud(A))
+        Si((j % 2 == 0) && (((i * 2) - 2) == j))
+            A[i][j] = X[i]
+        fin si
+    fin mientras que
+    Mientras que (j<Longitud(A))
+        Si ((j % 2 != 0) && (((i * 2) - 1) == j))
+            A[i][j] = 1
+        fin si
+    fin mientras que
+    b[i] = Y[i]
+    aux = i
+    Mientras que ( i<len)
+        Mientras que ( j<len)
+            Si((j % 2 == 0) && (((2 * i) - (2 * (aux + 1))) == j))
+                 A[i][j] = X[i - aux]
+            fin si
+            Si ((j % 2 != 0) && (((2 * i) - (2 * (aux + 1)) + 1) == j))
+                A[i][j] = 1
+            fin si
+            Si((j % 2 == 0) && (((2 * i) - (2 * (aux + 1)) + 2) == j))
+                Si(X[i - aux] != 0)
+                    A[i][j] = -X[i - aux]
+                Si no
+                    A[i][j] = X[i - aux]
+                fin si
+            fin si
+            Si ((j % 2 != 0) && (((2 * i) - (2 * (aux + 1)) + 3) == j))
+                A[i][j] = -1
+            fin si
+        fin mientras que
+    fin mientras que
+fin mientras que
+x = lusolve(A, b)
+Imprimir trazadores lineales
+Imprimir Resultados
+Imprimir coeficientes de los trazadores
+mientras que (i<Longitud(X))
+    Si(bes[i] >= 0)
+        Imprimir (as[i] + "x + " + bes[i])
+    Sino
+        Imprimir (as[i] + "x " + bes[i])
+    fin si
+fin mientras que

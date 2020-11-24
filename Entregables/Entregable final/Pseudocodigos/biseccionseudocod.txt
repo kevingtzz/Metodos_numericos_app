@@ -1,0 +1,30 @@
+//Autor Santiago
+//Metodo de biseccion
+
+Read func, a, b, niter, tol
+
+fa=f(a)
+fb=f(b)
+Si(fa = 0)
+    imprimir Se encontro una aproximación de la raiz en  + xm
+Si no 
+    xm=(a+b)/2
+    fxm=f(xm)
+    cont=1
+    Error=tol +1
+    Mientras ((cont <= niter) && (fxm != 0) && (error > tol))
+        Si(fa * fxm > 0)
+            a=xm
+            fa=fxm
+        Si no
+            b=xm
+            fb= xm
+        fin Si
+        xprev= xm
+        xm = (a + b)/(2)
+        fxm= f(xm)
+        error = |xprev-xm|
+        cont = cont+1
+    fin Mientras
+    imprimir xm
+fin Si

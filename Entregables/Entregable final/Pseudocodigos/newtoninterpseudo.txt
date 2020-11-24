@@ -1,0 +1,29 @@
+//Autor Santiago Albisser
+//Metodo newton interpolante
+
+Leer X, Y
+
+
+Mientras que (i<Longitud(X))
+    Mientras que (j<i+1)
+        D[i][j] = ((D[i][j - 1] - D[i - 1][j - 1])/(X[i] - X[i - j]))
+        Si (i=j)
+            b[i] = D[i][j]
+        fin si
+    fin mientras que
+fin mientras que
+
+bla = ""
+str = D[0][0] + " "
+
+Mientras que (i<Longitud(X))
+    Si(X[i - 1] >= 0)
+        bla = bla + "(x" + " - "+ (X[i - 1]) +")";
+        str = str + (D[i][i] > 0 ? " + " : " ") + (D[i][i] + " * " + bla)
+    Si no
+     bla = bla + "(x" + " + "+ (-X[i - 1]) +")";
+     str = str + (D[i][i] > 0 ? " + " : " ") + (D[i][i] + " * " + bla)
+    fin si
+fin mientras que
+imprimir b
+imprimir str

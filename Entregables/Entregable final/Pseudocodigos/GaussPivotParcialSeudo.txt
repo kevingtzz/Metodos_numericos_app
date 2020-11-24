@@ -1,0 +1,29 @@
+//Autor Santiago Albisser
+//Metodo Gaussiana pivot parcial
+
+Leer A,b 
+M =(A b)
+
+Mientras que (i<Longitud(M))
+    Imprimir etapa + i
+    M= cambiarFilas(M, i)
+    Mientras que(j<Longitud(M))
+        divisor = M[j][i] / M[i][i]
+        Mientras que (k<Longitud(M))
+            M[j][k] = (M[j][k] - (divisor * M[i][k]))
+        fin mientras que
+    fin mientras que
+    x= nuevo arreglo(Longitud(A))
+    Mientras que(i<Longitud(X))
+        x[i] = 0 
+    fin mientras que
+    Mientras que( i>=0)
+        sum = 0 
+        Mientras que (j<Longitud(M))
+            sum = sum + (M[i][j - 1] * x[j - 1])
+        fin mientras que
+        x[i] = new Array(((M[i][Longitud(M)] - sum) / (M[i][i]))
+    fin mientras que
+    imprimir x
+fin mientras que
+

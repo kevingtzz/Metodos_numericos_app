@@ -1,0 +1,31 @@
+//Autor Santiago Albisser
+//Metodo Regla falsa
+
+Leer funcion, a, b, niter, tol
+
+fa= f(a)
+fb= f(b)
+
+si (fa=0)
+    imprimir A
+sino ((fa*fb)<0) 
+    xm = (a - ((fa * (b - a)) / (fb - fa)))
+    fxm= f(xm)
+    contador=1
+    error= tol+1
+fin si
+Mientras ((error > tol) && (fxm != 0) && (contador < niter))
+    Si(fa*fxm <0)
+        b = xm
+        fb = fxm
+    sino 
+        a= xm
+        fa= fxm
+    fin si
+    xprev= xm
+    xm = (a - ((fa * (b - a)) / (fb - fa)))
+    fxm= f(xm)
+    error = |xm-xprev|
+    contador= contador+1
+fin mientras
+imprimir xm 

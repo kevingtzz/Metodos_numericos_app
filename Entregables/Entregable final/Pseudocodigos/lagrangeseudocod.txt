@@ -1,0 +1,25 @@
+//Autor Santiago Albisser
+//Metodo Lagrange
+
+Leer X,Y
+pol= ""
+valordeabajo=1
+
+Mientras que(i<Longitud(X))
+    str= ""
+    Mientras que(j<Longitud(X))
+        Si( i!= j)
+            valordeabajo = valordeabajo * (X[i] - X[j])
+            Si(X[j] >= 0)
+                 str = str + ("(x - " + X[j] + ")")
+            Sino 
+                 str = str + ("(x + " + (-X[j]) + ")")
+            fin Si
+        fin Si
+    fin mientras que
+    str = str + (" / (" + valordeabajo + ")")
+    valordeabajo = 1
+    imprimir i + str
+    pol = pol + ((Y[i] > 0 && i != 0) ? " + " : " ") + "(" + Y[i] + " * " + "L" + i + ")"
+fin mientras que
+imprimir pol

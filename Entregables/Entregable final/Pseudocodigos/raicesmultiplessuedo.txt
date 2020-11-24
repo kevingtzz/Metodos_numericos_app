@@ -1,0 +1,24 @@
+//Autor Santiago Albisser
+//Metodo Raices multiples
+
+Leer funcion, x0, tol, niter
+
+dh= derivada(str,'x')
+ddh= derivada(dh,'x')
+
+fx= f(x0)
+dfx= dh(x0)
+ddfx= ddh(x0)
+cont = 0
+error = tol +1 
+
+Mientras((error > tol) && (cont < niter))
+    x1 = x0 - ((fx * dfx)/((Math.pow(dfx, 2)) - (fx * ddfx)))
+    fx=f(x1)
+    dfx=dh(x1)
+    ddfx= ddh(x1)
+    error = |x1-x0|
+    x0= x1
+    cont = cont+1
+fin mientras
+imprimir x0

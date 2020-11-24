@@ -1,0 +1,36 @@
+//Autor Santiago Albisser
+//Metodo Doolittle
+
+Imprimir etapa 0
+
+Leer A,b
+
+L = identidad(Longitud(A))
+U = identidad(Longitud(A))
+
+Mientras que (i< Longitud(A))
+    sum = 0
+    Mientras que ( j< i-1)
+        sum = sum + (L[i - 1][j] * U[j][i - 1])
+    fin mientras que
+    U[i - 1][i - 1] = ((A[i - 1][i - 1] - sum)/(L[i - 1][i - 1]))
+    Mientras que (j<Longitud(A))
+        sum = 0
+        Mientras que (k< i -1 )
+            sum = sum + (L[i - 1][k] * U[k][j - 1])
+        fin mientras que
+        U[i - 1][j - 1] = ((A[i - 1][j - 1] - sum)/(L[i - 1][i - 1]))
+    fin mientras que
+    Mientras que (j<Longitud(A))
+        sum = 0 
+        Mientras que (k< i-1)
+            sum = sum + (L[j - 1][k] * U[k][i - 1])
+        fin mientras que
+        L[j - 1][i - 1] = ((A[j - 1][i - 1] - sum)/(U[i - 1][i - 1]))
+    fin mientras que
+    Imprimir L
+    Imprimir U
+fin mientras que
+z = sustprogr(L b)
+x = sustregr(U z)
+imprimir x

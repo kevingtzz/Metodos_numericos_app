@@ -1,0 +1,38 @@
+//Autor Santiago Albisser
+//Metodo Vandermonde
+
+Leer X,Y,V
+imprimir Matriz de vandermonde
+x= gaussTotal(V,Y)
+str =""
+imprimir Coeficientes del polinomio:
+Mientras que( i< Longitud(X))
+    str = str + " " + x[i]
+fin mientras que
+imprimir str
+imprimir Polinomio:
+str= ""
+Mientras que (i<Longitud(X))
+    Si(x[i] >= 0)
+        Si((Longitud(X) - 1 - i) == 1)
+             str = str + " + " + x[i] + "x"
+        sino ((Longiutd(X) - 1 - i) == 0)
+             str = str + " + " + x[i]
+        sino
+            str = str + " + " + x[i] + "x^" + (Longitud(x) - 1 - i)
+        fin si
+    sino 
+        Si(Longitud(x)-1-i) = 1)
+             str = str + " " + x[i] + "x"
+        sino(Longitud(X)-1-i)= 0)
+            str = str + " " + x[i]
+        Sino
+            str = str + " " + x[i] + "x^" + (Longitud(X) - 1 - i)
+        fin si
+    fin si
+fin mientras que
+imprimir str
+
+
+
+

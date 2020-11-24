@@ -1,0 +1,33 @@
+//Autor Santiago Albisser
+//Metodo secante
+
+Leer funcion, x0, x1, tol, niter
+
+fx0= f(x0)
+
+Si(fx0 = 0)
+    imprimir Se encontro una aproximacion de la raiz en " + x0
+Sino
+    fx1 = f(x1)
+    cont = 0
+    error = tol+1
+    Mientras ((cont <= niter) && (error > tol) && (fx1 != 0))
+        xn = x1 - ((fx1 * (x1 - x0))/(fx1 - fx0))
+        error = |x1-x0|
+        x0 = x1
+        fx0 = fx1
+        x1 = xn
+        fx1 = f(xn)
+        cont = cont+1
+    fin mientras 
+    Si (fx1 == 0)
+        Imprimir("Se encontro una aproximacion de la raiz en " + x1)
+        Si no(error < tol){
+        Imprimir("Se encontro una aproximacion de la raiz en " + x1)
+        Si no(fx1 - fx0){
+        imprimir("Puede haber raices multiples")
+        Si no
+        Imprimir("El metodo no encontro el resultado")
+    fin si
+    imprimir x0        
+fin si
