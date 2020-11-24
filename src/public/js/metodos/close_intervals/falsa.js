@@ -77,6 +77,10 @@ function reglaFalsa() {
 
     fa = math.evaluate(str,{x:a});
     fb = math.evaluate(str,{x:b});
+    if(isNaN(fa) || isNaN(fb)){
+        alert("Initial interval is not on functions domain");
+        return("Error");
+    }
     if (fa == 0) {
         console.log(a + " es una raiz");
     } else if ((fa * fb) < 0) {

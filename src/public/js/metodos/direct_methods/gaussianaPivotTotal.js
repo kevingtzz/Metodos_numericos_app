@@ -143,6 +143,10 @@ function gaussianaPivotTotal(){
     var A = AB[0];
     var b = AB[1];
 
+    if(math.det(A) == 0){
+        alert("The matrix A must be invertible");
+        return("Error");
+    }
     let data = [];
     var M = [];
     M = A;

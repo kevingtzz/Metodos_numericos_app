@@ -51,22 +51,26 @@ function secante(){
     let niter = document.getElementById('iterations').value;
 
     if(niter < 0){
-        console.log("El numero de iteraciones debe ser positivo");
+        alert("El numero de iteraciones debe ser positivo");
         return("Error");
     }
     if(tol < 0){
-        console.log("La tolerancia debe ser positiva");
+        alert("La tolerancia debe ser positiva");
         return("Error");
     }
     if(x1 <= x0){
-        console.log("x1 debe ser mayor a x0");
+        alert("x1 debe ser mayor a x0");
         return("Error");
     }
     fx0 = math.evaluate(str,{x:x0});
+    fx1 = math.evaluate(str,{x:x1});
+    if(isNaN(fx0) || isNaN(fx1)){
+        alert("Initial interval is not on functions domain");
+        return("Error");
+    }
     if (fx0 == 0){
         console.log("Se encontro una aproximacion de la raiz en " + x0);
     } else {
-        fx1 = math.evaluate(str,{x:x1});
         cont = 0;
         var error = tol + 1;
         data.push([cont, Number.parseFloat(x0).toPrecision(17), Number.parseFloat(fx0).toExponential(1), '']);

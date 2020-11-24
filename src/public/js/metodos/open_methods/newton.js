@@ -51,16 +51,24 @@ function newton() {
     let niter = document.getElementById('iterations').value;
 
     if(niter < 0){
-        console.log("El numero de iteraciones debe ser positivo");
+        alert("El numero de iteraciones debe ser positivo");
         return("Error");
     }
     if(tol < 0){
-        console.log("La tolerancia debe ser positiva");
+        alert("La tolerancia debe ser positiva");
         return("Error");
     }
 
     fx0 = math.evaluate(str,{x:x0});
     dfx0= dfx.evaluate({x:x0});
+    if(isNaN(fx0)){
+        alert("Initial value is not on functions domain");
+        return("Error");
+    }
+    if(isNaN(dfx0)){
+        alert("Initian value is not on derivative domain");
+        return("Error");
+    }
     contador = 0;
     var error = tol + 1;
     data.push([contador, Number.parseFloat(x0).toPrecision(17), Number.parseFloat(fx0).toExponential(1), '']);

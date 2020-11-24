@@ -51,16 +51,28 @@ function raicesMultiples(){
     let niter = document.getElementById('iterations').value;
 
     if(niter < 0){
-        console.log("El numero de iteraciones debe ser positivo");
+        alert("El numero de iteraciones debe ser positivo");
         return("Error");
     }
     if(tol < 0){
-        console.log("La tolerancia debe ser positiva");
+        alert("La tolerancia debe ser positiva");
         return("Error");
     }
     fx = math.evaluate(str,{x:x0});
     dfx = dh.evaluate({x:x0});
     ddfx = ddh.evaluate({x:x0});
+    if(isNaN(fx)){
+        alert("Initial value is not on functions domain");
+        return("Error");
+    }
+    if(isNaN(dfx)){
+        alert("Initian value is not on derivative domain");
+        return("Error");
+    }
+    if(isNaN(ddfx)){
+        alert("Initian value is not on second derivative domain");
+        return("Error");
+    }
     cont = 0;
     error = tol + 1;
     data.push([cont, Number.parseFloat(x0).toPrecision(17), Number.parseFloat(fx).toExponential(1),'']);

@@ -22,17 +22,17 @@ function create_table(data, tbody) {
         trow.appendChild(i);
 
         let a = document.createElement('th');
-        let a_text = document.createTextNode(round(row[1], num_decimals));
+        let a_text = document.createTextNode(row[1]);
         a.appendChild(a_text);
         trow.appendChild(a);
 
         let xm = document.createElement('th');
-        let xm_text = document.createTextNode(round(row[2], num_decimals));
+        let xm_text = document.createTextNode(row[2]);
         xm.appendChild(xm_text);
         trow.appendChild(xm);
 
         let b = document.createElement('th');
-        let b_text = document.createTextNode(round(row[3], num_decimals));
+        let b_text = document.createTextNode(row[3]);
         b.appendChild(b_text);
         trow.appendChild(b);
 
@@ -74,6 +74,22 @@ function biseccion() {
         //niter = 100;
         fa = math.evaluate(func,{x:a});
         fb = math.evaluate(func,{x:b});
+        if(isNaN(fa) || isNaN(fb)){
+            alert("Initial interval is not on functions domain");
+            return("Error");
+        }
+        if(niter < 0){
+            alert("Iterations must be positive");
+            return("Error");
+        }
+        if(tol < 0){
+            alert("Tolerance must be positive");
+            return("Error");
+        }
+        if(b < a){
+            alert("b must be greater than a");
+            return("Error");
+        }
     
         if (fa == 0) {
             console.log("Se encontro una aproximacion de la raiz en " + xm);

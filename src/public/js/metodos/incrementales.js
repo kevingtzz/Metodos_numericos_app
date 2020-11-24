@@ -32,6 +32,10 @@ function incrementales(){
         return("Error");
     }
     fx0 = math.evaluate(str,{x:x0});
+    if(isNaN(fx0)){
+        alert("Initian value is not on functions domain");
+        return("Error");
+    }
     if (fx0 == 0){
         let row = document.createElement('tr');
 

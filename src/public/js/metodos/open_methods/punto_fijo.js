@@ -58,12 +58,16 @@ function puntoFijo(){
     contador = 0;
     var error = tol+1;
     fx= math.evaluate(strf,{x:x0});
+    if(isNaN(fx)){
+        alert("Initial value is not on functions domain");
+        return("Error");
+    }
     if(niter < 0){
-        console.log("El numero de iteraciones debe ser positivo");
+        alert("El numero de iteraciones debe ser positivo");
         return("Error");
     }
     if(tol < 0){
-        console.log("La tolerancia debe ser positiva");
+        alert("La tolerancia debe ser positiva");
         return("Error");
     }
 

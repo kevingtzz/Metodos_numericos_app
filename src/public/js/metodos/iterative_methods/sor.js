@@ -302,6 +302,10 @@ function sor(){
     var b = AB[1];
     let w = parseFloat(document.getElementById('w').value);
     let x0 = AB[2];//entrada
+    if(math.det(A) == 0){
+        alert("The matrix A must be invertible");
+        return("Error");
+    }
     let x1 = new Array(x0.length);
     let tol = parseFloat(document.getElementById('tolerance').value);
     let Nmax = document.getElementById('iterations').value;
