@@ -104,10 +104,20 @@ button.addEventListener('click', () => {
         str = str + (" / (" + valordeabajo + ")");
         valordeabajo = 1;
         console.log("L" + i + ":" + str);
+        let title = "L" + i + ":" + str;
         pol = pol + ((Y[i] > 0 && i != 0) ? " + " : " ") + "(" + Y[i] + " * " + "L" + i + ")";
+        let container = document.getElementById('results');
+        let title_pol = document.createElement('h4');
+        let tilte_pol_txt = document.createTextNode(title);
+        title_pol.appendChild(tilte_pol_txt);
+        container.appendChild(title_pol);
     }
     console.log("");
     console.log("Polinomio: ");
     console.log(pol);
-
+    let container = document.getElementById('poli');
+    let title_pol = document.createElement('h4');
+    let tilte_pol_txt = document.createTextNode(pol);
+    title_pol.appendChild(tilte_pol_txt);
+    container.appendChild(title_pol);
 }
