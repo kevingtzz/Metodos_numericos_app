@@ -64,11 +64,15 @@ table, tr, td {
 
 .input_tables {
     display: grid;
-    grid-template-rows: auto auto;
     grid-template-columns: auto auto;
     margin: auto;
     text-align: center;
     margin: 50px auto 30px auto;
+}
+
+.inputs_container {
+    display: grid;
+    grid-template-columns: auto auto;
 }
 
 .matrix_input {
@@ -163,6 +167,10 @@ table, tr, td {
 }
 
 #res {
+    margin: auto;
+}
+
+.table {
     margin: auto;
 }
 

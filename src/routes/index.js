@@ -57,4 +57,8 @@ router.get('/fact_lu_p', (req, res) => {
     res.sendFile(path.join(config.AppPath, 'src/views/fact_lu_p.html'));
 });
 
+router.get('/seidel', (req, res) => {
+    res.sendFile(path.join(config.AppPath, 'src/views/seidel.html'));
+});
+
 module.exports = router;
