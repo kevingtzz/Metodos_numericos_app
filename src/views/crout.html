@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/gaussianS.css">
+    <script src="https://pagecdn.io/lib/mathjs/7.1.0/math.min.js"></script>
+    <title>Crout</title>
+</head>
+<body>
+    <h1 class="title">Crout</h1>
+    <div class="container">
+        <div class="inputs">
+            <input type="number" min="2" max="10" required name="size" value="2" placeholder="Matrix size" id="size" class="lil-input input">
+            <a href="#" id="size_btn">
+                <span>Set size</span>
+                <div class="liquid liquid_size"></div>
+            </a>
+            <div class="input_tables">
+                <h3>A</h3>
+                <h3>B</h3>
+                <table id="input_table_a">
+                    <tbody id="tbody_a"></tbody>
+                </table>
+                <table id="input_table_b">
+                    <tbody id="tbody_b"></tbody>
+                </table>
+            </div>
+        </div>
+        <a href="#" id="save">
+            <span>Save</span>
+            <div class="liquid liquid_save"></div>
+        </a>
+        <a href="#" id="start">
+            <span>start</span>
+            <div class="liquid"></div>
+        </a>
+        <div id="tables">
+            <div id="stage_tables"></div>
+        </div>
+    </div>
+    <script src="./js/metodos/fact_directa/crout.js"></script>
+</body>
+</html>
