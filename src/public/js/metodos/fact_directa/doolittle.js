@@ -283,6 +283,18 @@ function doolittle(){
     console.log("x: ");
     for(let i = 0; i < x.length; i++){
         console.log(x[i]);
+
+        if (!stage_tables_created) {
+            create_res_table(x, document.getElementById('tbody_res'));
+            stage_tables_created = true;
+        } else {
+            let table = document.getElementById('res');
+            table.removeChild(document.getElementById('tbody_res'));
+            let tbody = document.createElement('tbody');
+            tbody.setAttribute('id', 'tbody_res');
+            table.appendChild(tbody);
+            create_res_table(x, tbody);
+        }
     }
 }
 
@@ -299,4 +311,15 @@ function create_process_tables(data, stage, tbody) {
         }
         tbody.appendChild(input_row);
     }
+}
+
+function create_res_table(data, tbody) {
+    let input_row = document.createElement('tr');
+    for (let col = 0; col < data.length; col++) {
+        let input_col = document.createElement('td');
+        let input = document.createTextNode(data[col]);
+        input_col.appendChild(input)
+        input_row.appendChild(input_col);
+    }
+    tbody.appendChild(input_row);
 }
