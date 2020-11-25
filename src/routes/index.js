@@ -93,4 +93,16 @@ router.get('/trazcub', (req, res) => {
     res.sendFile(path.join(config.AppPath, 'src/views/trazcub.html'));
 });
 
+router.get('/cholesky', (req, res) => {
+    res.sendFile(path.join(config.AppPath, 'src/views/cholesky.html'));
+});
+
+router.get('/crout', (req, res) => {
+    res.sendFile(path.join(config.AppPath, 'src/views/crout.html'));
+});
+
+router.get('/doolittle', (req, res) => {
+    res.sendFile(path.join(config.AppPath, 'src/views/doolittle.html'));
+});
+
 module.exports = router;
