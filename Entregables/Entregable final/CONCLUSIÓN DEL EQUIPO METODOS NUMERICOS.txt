@@ -1,0 +1,15 @@
+-------------------------------------CONCLUSIÓN DEL EQUIPO METODOS NUMERICOS-------------------------------------
+
+
+A partir de un largo y detallado proyecto en el cual se desarrollo cada uno de los métodos requeridos desde
+el comienzo del semestre, el equipo métodos numéricos llego a la conclusión de que a la hora de desarrollar 
+cada uno de los métodos con javascript se añadió un grado de dificultad mayor, debido a que este es un lenguaje
+algo limitado, y el encontrar librerías para el desarrollo de lo que se necesitaba nos requirió un esfuerzo mayor.
+A medida que se desarrollaba cada uno de los metodos, se presento dificultades con el lenguaje, esto debido que a
+comparación de lenguajes como lo es python, Javascript no cuenta con una variedad de librerías útiles para el 
+desarrollo logico de la aplicación.
+otro factor importante de la extensión del desarrollo por nuestra parte fue el encontrar un modo para ingresar 
+funciones matemáticas, construcción y graficación de matrices.
+dejando atrás las dificultades con el lenguaje, el aprendizaje a la hora de implementar cada uno de los métodos
+y pensar como un usuario para la utilización de estos, fue una experiencia la cual se pudo lograr gracias a lo
+aprendido en el transcurso del semestre.
