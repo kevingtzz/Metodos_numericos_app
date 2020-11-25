@@ -87,15 +87,16 @@ function raicesMultiples(){
         data.push([cont, Number.parseFloat(x0).toPrecision(17), Number.parseFloat(fx).toExponential(1), Number.parseFloat(error).toExponential(1)]);
     }
     if (fx == 0){
-        console.log("Se encontro una aproximacion de la raiz en " + x0);
+        alert("Se encontro una aproximacion de la raiz en " + x0);
     } else if (dfx == 0){
-        console.log("Puede haber raices multiples");
+        alert("Puede haber raices multiples");
     } else if (ddfx == 0){
-        console.log(x0 + " puede ser una raiz con multiplicidad 2");
+        alert(x0 + " puede ser una raiz con multiplicidad 2");
     } else if (error < tol) {
-        console.log("Se encontro una aproximacion de la raiz en " + x0);
+        alert("Se encontro una aproximacion de la raiz en " + x0);
     } else {
-        console.log("El metodo no encontro la solucion");
+        alert("El metodo no encontro la solucion");
+        return("No la encontro");
     }
     if (!table_created) {
         create_table(data, document.getElementById('table-body'));

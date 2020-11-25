@@ -79,6 +79,14 @@ function trazCuad(){
     let X = XY[0]
     let Y = XY[1]
 
+    for(let i = 0; i < X.length; i++){
+        for(let j = i; j < X.length; j++){
+            if(X[i] == X[j]){
+                alert("There cannot be equal values in X vector");
+                return("Error");
+            }
+        }
+    }
     let len = 3 * (X.length - 1);
     let A = [];
     let b = new Array(len);

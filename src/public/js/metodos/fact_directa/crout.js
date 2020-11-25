@@ -151,7 +151,10 @@ function crout(){
     AB = generate_arrays();
     var A = AB[0];
     var b = AB[1];
-
+    if(math.det(A) == 0){
+        alert("The matrix A must be invertible");
+        return("Error");
+    }
     for(let i = 0; i < A.length;i++){
         if(A.length != A[i].length){
             alert("La matriz A debe ser cuadrada");

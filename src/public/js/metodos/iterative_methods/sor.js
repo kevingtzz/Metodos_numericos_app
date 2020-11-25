@@ -306,6 +306,16 @@ function sor(){
         alert("The matrix A must be invertible");
         return("Error");
     }
+    for(let i = 0; i < A.length; i++){
+        for(let j = 0; j < A.length; j++){
+            if(i == j){
+                if(A[i][j] == 0){
+                    alert("Matrix A cannot have zeros in its diagonal");
+                    return("Error");
+                }
+            }
+        }
+    }
     let x1 = new Array(x0.length);
     let tol = parseFloat(document.getElementById('tolerance').value);
     let Nmax = document.getElementById('iterations').value;
