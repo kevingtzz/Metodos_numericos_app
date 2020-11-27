@@ -81,7 +81,7 @@ function reglaFalsa() {
         alert("There is no root on the initial interval");
         return("Error");
     }
-    if(isNaN(fa) || isNaN(fb)){
+    if(isNaN(fa) || isNaN(fb) || !isFinite(fa) || !isFinite(fb)){
         alert("Initial interval is not on functions domain");
         return("Error");
     }

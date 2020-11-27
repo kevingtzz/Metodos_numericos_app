@@ -345,7 +345,7 @@ function jacobi(){
     }
     var specRatius = ML.Array.max(valors);
     if(specRatius > 1){
-        alert("El radio espectral de la matriz de transicion es: " + specRatius + ". Como es mayor a 1 el metodo no converge");
+        alert("Spectral radius from transition matrix is: " + specRatius + ". It is greater than 1 so the method does not converge");
     }
     let C = multiplicarMatrices(DI, b);
     let error = 1;

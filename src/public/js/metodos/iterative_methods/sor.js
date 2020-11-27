@@ -358,7 +358,7 @@ function sor(){
     }
     var specRatius = ML.Array.max(valors);
     if(specRatius > 1){
-        alert("El radio espectral de la matriz de transicion es: " + specRatius + ". Como es mayor a 1 el metodo no converge");
+        alert("Spectral radius from transition matrix is: " + specRatius + ". It is greater than 1 so the method does not converge");
     }
     let DwLIb = multiplicarMatrices(DwLI, b);
     let C = multiplicarMatrizPorConstante(DwLIb, w);
@@ -371,7 +371,7 @@ function sor(){
         /*['Iter', 'E', 'x']*/
     ];
     data.push([cont, '', x0]);
-    while((cont < Nmax) && (error > tol)){
+    while((cont < Nmax) && (error >= tol)){
         for(let i = 0; i < x0.length; i++){
             let sum = 0;
             for(let j = 0; j < x0.length; j++){
@@ -389,6 +389,7 @@ function sor(){
         x0 = x1;
         x1 = new Array(x0.length);
     }
+    console.log(error);
     console.table(data);
 
     let title = document.createElement('h3');

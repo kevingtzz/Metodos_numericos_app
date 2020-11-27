@@ -64,7 +64,7 @@ function secante(){
     }
     fx0 = math.evaluate(str,{x:x0});
     fx1 = math.evaluate(str,{x:x1});
-    if(isNaN(fx0) || isNaN(fx1)){
+    if(isNaN(fx0) || isNaN(fx1) || !isFinite(fx0) || !isFinite(fx1)){
         alert("Initial interval is not on functions domain");
         return("Error");
     }

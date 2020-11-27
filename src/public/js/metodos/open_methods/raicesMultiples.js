@@ -61,15 +61,15 @@ function raicesMultiples(){
     fx = math.evaluate(str,{x:x0});
     dfx = dh.evaluate({x:x0});
     ddfx = ddh.evaluate({x:x0});
-    if(isNaN(fx)){
+    if(isNaN(fx) || !isFinite(fx)){
         alert("Initial value is not on functions domain");
         return("Error");
     }
-    if(isNaN(dfx)){
+    if(isNaN(dfx) || !isFinite(dfx)){
         alert("Initian value is not on derivative domain");
         return("Error");
     }
-    if(isNaN(ddfx)){
+    if(isNaN(ddfx) || !isFinite(ddfx)){
         alert("Initian value is not on second derivative domain");
         return("Error");
     }

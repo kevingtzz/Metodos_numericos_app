@@ -58,7 +58,7 @@ function puntoFijo(){
     contador = 0;
     var error = tol+1;
     fx= math.evaluate(strf,{x:x0});
-    if(isNaN(fx)){
+    if(isNaN(fx) || !isFinite(fx)){
         alert("Initial value is not on functions domain");
         return("Error");
     }

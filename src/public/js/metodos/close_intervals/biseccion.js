@@ -74,7 +74,7 @@ function biseccion() {
         //niter = 100;
         fa = math.evaluate(func,{x:a});
         fb = math.evaluate(func,{x:b});
-        if(isNaN(fa) || isNaN(fb)){
+        if(isNaN(fa) || isNaN(fb) || !isFinite(fa) || !isFinite(fb)){
             alert("Initial interval is not on functions domain");
             return("Error");
         }

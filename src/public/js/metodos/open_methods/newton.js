@@ -61,11 +61,11 @@ function newton() {
 
     fx0 = math.evaluate(str,{x:x0});
     dfx0= dfx.evaluate({x:x0});
-    if(isNaN(fx0)){
+    if(isNaN(fx0) || !isFinite(fx0)){
         alert("Initial value is not on functions domain");
         return("Error");
     }
-    if(isNaN(dfx0)){
+    if(isNaN(dfx0) || !isFinite(dfx0)){
         alert("Initian value is not on derivative domain");
         return("Error");
     }
