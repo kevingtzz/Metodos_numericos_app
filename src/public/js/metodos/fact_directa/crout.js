@@ -151,6 +151,16 @@ function crout(){
     AB = generate_arrays();
     var A = AB[0];
     var b = AB[1];
+    for(let i = 0; i < A.length; i++){
+        for(let j = 0; j < A.length; j++){
+            if(i == j){
+                if(A[i][j] == 0){
+                    alert("Matrix A cannot have zeros in its diagonal");
+                    return("Error");
+                }
+            }
+        }
+    }
     if(math.det(A) == 0){
         alert("The matrix A must be invertible");
         return("Error");

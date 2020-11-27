@@ -338,6 +338,15 @@ function gaussSeidel(){
     let DL = restarMatrices(D, L);
     let DLI = hallarInversa(DL);
     let T = multiplicarMatrices(DLI, U);
+    var e = new ML.EVD(T);
+    var valors = e.d;
+    for(let i = 0; i < valors; i++){
+        valors[i] = Math.abs(valors[i]);
+    }
+    var specRatius = ML.Array.max(valors);
+    if(specRatius > 1){
+        alert("El radio espectral de la matriz de transicion es: " + specRatius + ". Como es mayor a 1 el metodo no converge");
+    }
     let C = multiplicarMatrices(DLI, b);
     let error = 1;
     let cont = 0;

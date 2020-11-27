@@ -337,7 +337,16 @@ function jacobi(){
     let U = formarMatrizU(A);
     let DI = hallarInversa(D);
     let LU = sumarMatrices(L, U);
-    let T = multiplicarMatrices(DI, LU);
+    let T = multiplicarMatrices(DI, LU);//revisar radio espectral
+    var e = new ML.EVD(T);
+    var valors = e.d;
+    for(let i = 0; i < valors; i++){
+        valors[i] = Math.abs(valors[i]);
+    }
+    var specRatius = ML.Array.max(valors);
+    if(specRatius > 1){
+        alert("El radio espectral de la matriz de transicion es: " + specRatius + ". Como es mayor a 1 el metodo no converge");
+    }
     let C = multiplicarMatrices(DI, b);
     let error = 1;
     let cont = 0;
@@ -414,9 +423,22 @@ function jacobi(){
     tablec.appendChild(tbodyc);
     stage_tables.appendChild(tablec);
     create_result_table(matrizC, tbodyc);
-
+    //var e = jsfeat.linalg.eigenVV(T);
+    //console.log(e);
+    // e = numeric.eig(T);
+    //console.log(e);
+    //var e = nd.la.eigen(T);
+    //console.log(e);
+    //var e = eigenvalues(T);
+    //console.log(e);
     // console.log("Radio espectral: ");
-    // var e = new mama.EigenvalueDecomposition(T);
+    /*for(let i = 0; i < T.length; i++){
+        for(let j = 0; j < T.length; j++){
+            T[i][j] = parseFloat(T[i][j]);
+        }
+    }
+    var e = math.eigs(T);
+    console.log(e);*/
     // var aba = e.realEigenvalues;
     // for(let i = 0; i < aba.length; i++){
     //     aba[i] = Math.abs(aba[i]).toPrecision(8);

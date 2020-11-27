@@ -19,7 +19,7 @@
             <input type="number" min="1" name="iterations" placeholder="iterations" id="iterations" class="lil-input">
             <input type="number" min="0" step="any" name="tolerance" placeholder="tolerance" id="tolerance" class="lil-input">
         </div>
-        <a href="#" id="start">
+        <a href="#" id="start" onclick="plot();">
             <span>start</span>
             <div class="liquid"></div>
         </a>
@@ -41,7 +41,7 @@
     </div>
     <script src="./js/metodos/close_intervals/biseccion.js"></script>
     <div class="layer">
-        <section id="plotSettings">
+        <!--<section id="plotSettings">
             <label for="xMin" style="color: white;">xMin: </label><input type=number id="xMin" value=-5 step=0.5 oninput="plot();">
             <p></p>
             <label for="xMin" style="color: white;">xMax: </label><input type=number id="xMax" value=6 step=0.5 oninput="plot();">
@@ -51,12 +51,12 @@
             <p></p>
             <label for="yMax" style="color: white;">yMax: </label><input type=number id="yMax" value=6 step=0.5 oninput="plot();">
             <p></p>
-            <!--<label for="function" style="color: white;">Function to plot: </label>
-            <input id="function" type="text" onchange="plot();">-->
+            <label for="function" style="color: white;">Function to plot: </label>
+            <input id="function" type="text" onchange="plot();">
             <p></p><br>
             <button id="button" onclick="plot();">Plot</button>
 
-        </section>
+        </section>-->
         <section id="plot">
             <div id="myFunction"></div>
         </section>

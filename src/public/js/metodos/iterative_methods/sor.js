@@ -351,6 +351,15 @@ function sor(){
     let wU = multiplicarMatrizPorConstante(U, w);
     let nwDwU = sumarMatrices(nwD, wU);
     let T = multiplicarMatrices(DwLI, nwDwU);
+    var e = new ML.EVD(T);
+    var valors = e.d;
+    for(let i = 0; i < valors; i++){
+        valors[i] = Math.abs(valors[i]);
+    }
+    var specRatius = ML.Array.max(valors);
+    if(specRatius > 1){
+        alert("El radio espectral de la matriz de transicion es: " + specRatius + ". Como es mayor a 1 el metodo no converge");
+    }
     let DwLIb = multiplicarMatrices(DwLI, b);
     let C = multiplicarMatrizPorConstante(DwLIb, w);
     let error = 1;

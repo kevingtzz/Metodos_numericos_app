@@ -28,12 +28,12 @@ function create_table(data, tbody) {
         trow.appendChild(fxi);
 
         let gxi = document.createElement('th');
-        let gxi_text = document.createTextNode(row[2]);
-        fxi.appendChild(gxi_text);
+        let gxi_text = document.createTextNode(row[3]);
+        gxi.appendChild(gxi_text);
         trow.appendChild(gxi);
 
         let E = document.createElement('th');
-        let E_text = document.createTextNode(row[3]);
+        let E_text = document.createTextNode(row[4]);
         E.appendChild(E_text);
         trow.appendChild(E);
 
@@ -72,7 +72,7 @@ function puntoFijo(){
     }
 
     data.push([contador, Number.parseFloat(x0).toPrecision(17), Number.parseFloat(math.evaluate(strg,{x:x0})).toPrecision(17),Number.parseFloat(fx).toExponential(1), '']);
-    while((fx!=0) && (error>tol )&& (contador<niter)){
+    while((fx!=0) && (error>tol ) && (contador<niter)){
         xn= math.evaluate(strg,{x:x0});
         fx= math.evaluate(strf,{x:xn});
         error= Math.abs(xn-x0);
@@ -105,22 +105,22 @@ var parameters = {
       fn: 'sin(x)', 
    }],
     grid: true,
-    yAxis: {domain: [-1, 1]},
-    xAxis: {domain: [0, 2*Math.PI]}
+    /*yAxis: {domain: [-1, 1]},
+    xAxis: {domain: [0, 2*Math.PI]}*/
 };
   
 function plot() {
     var aus = "";
     aus = document.getElementById('function_f').value;
     var fu = aus.replaceAll('e','2.718281828459045');
-    var xMin = document.querySelector("#xMin").value;
+    /*var xMin = document.querySelector("#xMin").value;
     var xMax = document.querySelector("#xMax").value;
     var yMin = document.querySelector("#yMin").value;
-    var yMax = document.querySelector("#yMax").value;
+    var yMax = document.querySelector("#yMax").value;*/
     
     parameters.data[0].fn = fu;
-    parameters.xAxis.domain = [xMin, xMax];
-    parameters.yAxis.domain = [yMin, yMax];
+    /*parameters.xAxis.domain = [xMin, xMax];
+    parameters.yAxis.domain = [yMin, yMax];*/
     
     functionPlot(parameters);
 }
