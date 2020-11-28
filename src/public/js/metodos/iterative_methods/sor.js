@@ -359,6 +359,17 @@ function sor(){
     var specRatius = ML.Array.max(valors);
     if(specRatius > 1){
         alert("Spectral radius from transition matrix is: " + specRatius + ". It is greater than 1 so the method does not converge");
+        let r_container = document.getElementById('espec');
+
+        if (stage_tables_created) {
+            r_container.removeChild(document.getElementById('r'));
+        }
+
+        let r = document.createElement('h4');
+        r.setAttribute('id', 'r');
+        let r_txt = document.createTextNode(`Spectral Ratio: ${specRatius}`);
+        r.appendChild(r_txt);
+        r_container.appendChild(r);
     }
     let DwLIb = multiplicarMatrices(DwLI, b);
     let C = multiplicarMatrizPorConstante(DwLIb, w);
