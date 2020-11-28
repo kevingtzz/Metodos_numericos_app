@@ -297,6 +297,16 @@ function gaussSeidel(){
         alert("The matrix A must be invertible");
         return("Error");
     }
+    for(let i = 0; i < A.length; i++){
+        for(let j = 0; j < A.length; j++){
+            if(i == j){
+                if(A[i][j] == 0){
+                    alert("Matrix A cannot have zeros in its diagonal");
+                    return("Error");
+                }
+            }
+        }
+    }
     let x1 = new Array(x0.length);
     let tol = parseFloat(document.getElementById('tolerance').value);
     let Nmax = document.getElementById('iterations').value;
@@ -328,6 +338,15 @@ function gaussSeidel(){
     let DL = restarMatrices(D, L);
     let DLI = hallarInversa(DL);
     let T = multiplicarMatrices(DLI, U);
+    var e = new ML.EVD(T);
+    var valors = e.d;
+    for(let i = 0; i < valors; i++){
+        valors[i] = Math.abs(valors[i]);
+    }
+    var specRatius = ML.Array.max(valors);
+    if(specRatius > 1){
+        alert("Spectral radius from transition matrix is: " + specRatius + ". It is greater than 1 so the method does not converge");
+    }
     let C = multiplicarMatrices(DLI, b);
     let error = 1;
     let cont = 0;

@@ -61,15 +61,15 @@ function raicesMultiples(){
     fx = math.evaluate(str,{x:x0});
     dfx = dh.evaluate({x:x0});
     ddfx = ddh.evaluate({x:x0});
-    if(isNaN(fx)){
+    if(isNaN(fx) || !isFinite(fx)){
         alert("Initial value is not on functions domain");
         return("Error");
     }
-    if(isNaN(dfx)){
+    if(isNaN(dfx) || !isFinite(dfx)){
         alert("Initian value is not on derivative domain");
         return("Error");
     }
-    if(isNaN(ddfx)){
+    if(isNaN(ddfx) || !isFinite(ddfx)){
         alert("Initian value is not on second derivative domain");
         return("Error");
     }
@@ -87,15 +87,16 @@ function raicesMultiples(){
         data.push([cont, Number.parseFloat(x0).toPrecision(17), Number.parseFloat(fx).toExponential(1), Number.parseFloat(error).toExponential(1)]);
     }
     if (fx == 0){
-        console.log("Se encontro una aproximacion de la raiz en " + x0);
+        alert("Se encontro una aproximacion de la raiz en " + x0);
     } else if (dfx == 0){
-        console.log("Puede haber raices multiples");
+        alert("Puede haber raices multiples");
     } else if (ddfx == 0){
-        console.log(x0 + " puede ser una raiz con multiplicidad 2");
+        alert(x0 + " puede ser una raiz con multiplicidad 2");
     } else if (error < tol) {
-        console.log("Se encontro una aproximacion de la raiz en " + x0);
+        alert("Se encontro una aproximacion de la raiz en " + x0);
     } else {
-        console.log("El metodo no encontro la solucion");
+        alert("El metodo no encontro la solucion");
+        return("No la encontro");
     }
     if (!table_created) {
         create_table(data, document.getElementById('table-body'));
@@ -115,22 +116,22 @@ var parameters = {
       fn: 'sin(x)', 
    }],
     grid: true,
-    yAxis: {domain: [-1, 1]},
-    xAxis: {domain: [0, 2*Math.PI]}
+    /*yAxis: {domain: [-1, 1]},
+    xAxis: {domain: [0, 2*Math.PI]}*/
 };
   
 function plot() {
     var aus = "";
     aus = document.getElementById('function').value;
     var fu = aus.replaceAll('e','2.718281828459045');
-    var xMin = document.querySelector("#xMin").value;
+    /*var xMin = document.querySelector("#xMin").value;
     var xMax = document.querySelector("#xMax").value;
     var yMin = document.querySelector("#yMin").value;
-    var yMax = document.querySelector("#yMax").value;
+    var yMax = document.querySelector("#yMax").value;*/
     
     parameters.data[0].fn = fu;
-    parameters.xAxis.domain = [xMin, xMax];
-    parameters.yAxis.domain = [yMin, yMax];
+    /*parameters.xAxis.domain = [xMin, xMax];
+    parameters.yAxis.domain = [yMin, yMax];*/
     
     functionPlot(parameters);
 }

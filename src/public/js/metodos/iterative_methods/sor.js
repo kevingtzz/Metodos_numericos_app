@@ -306,6 +306,16 @@ function sor(){
         alert("The matrix A must be invertible");
         return("Error");
     }
+    for(let i = 0; i < A.length; i++){
+        for(let j = 0; j < A.length; j++){
+            if(i == j){
+                if(A[i][j] == 0){
+                    alert("Matrix A cannot have zeros in its diagonal");
+                    return("Error");
+                }
+            }
+        }
+    }
     let x1 = new Array(x0.length);
     let tol = parseFloat(document.getElementById('tolerance').value);
     let Nmax = document.getElementById('iterations').value;
@@ -341,6 +351,15 @@ function sor(){
     let wU = multiplicarMatrizPorConstante(U, w);
     let nwDwU = sumarMatrices(nwD, wU);
     let T = multiplicarMatrices(DwLI, nwDwU);
+    var e = new ML.EVD(T);
+    var valors = e.d;
+    for(let i = 0; i < valors; i++){
+        valors[i] = Math.abs(valors[i]);
+    }
+    var specRatius = ML.Array.max(valors);
+    if(specRatius > 1){
+        alert("Spectral radius from transition matrix is: " + specRatius + ". It is greater than 1 so the method does not converge");
+    }
     let DwLIb = multiplicarMatrices(DwLI, b);
     let C = multiplicarMatrizPorConstante(DwLIb, w);
     let error = 1;
@@ -352,7 +371,7 @@ function sor(){
         /*['Iter', 'E', 'x']*/
     ];
     data.push([cont, '', x0]);
-    while((cont < Nmax) && (error > tol)){
+    while((cont < Nmax) && (error >= tol)){
         for(let i = 0; i < x0.length; i++){
             let sum = 0;
             for(let j = 0; j < x0.length; j++){
@@ -370,6 +389,7 @@ function sor(){
         x0 = x1;
         x1 = new Array(x0.length);
     }
+    console.log(error);
     console.table(data);
 
     let title = document.createElement('h3');

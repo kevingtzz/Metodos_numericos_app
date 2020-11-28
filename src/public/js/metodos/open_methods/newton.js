@@ -61,11 +61,11 @@ function newton() {
 
     fx0 = math.evaluate(str,{x:x0});
     dfx0= dfx.evaluate({x:x0});
-    if(isNaN(fx0)){
+    if(isNaN(fx0) || !isFinite(fx0)){
         alert("Initial value is not on functions domain");
         return("Error");
     }
-    if(isNaN(dfx0)){
+    if(isNaN(dfx0) || !isFinite(dfx0)){
         alert("Initian value is not on derivative domain");
         return("Error");
     }
@@ -109,22 +109,22 @@ var parameters = {
       fn: 'sin(x)', 
    }],
     grid: true,
-    yAxis: {domain: [-1, 1]},
-    xAxis: {domain: [0, 2*Math.PI]}
+    /*yAxis: {domain: [-1, 1]},
+    xAxis: {domain: [0, 2*Math.PI]}*/
 };
   
 function plot() {
     var aus = "";
     aus = document.getElementById('function').value;
     var fu = aus.replaceAll('e','2.718281828459045');
-    var xMin = document.querySelector("#xMin").value;
+    /*var xMin = document.querySelector("#xMin").value;
     var xMax = document.querySelector("#xMax").value;
     var yMin = document.querySelector("#yMin").value;
-    var yMax = document.querySelector("#yMax").value;
+    var yMax = document.querySelector("#yMax").value;*/
     
     parameters.data[0].fn = fu;
-    parameters.xAxis.domain = [xMin, xMax];
-    parameters.yAxis.domain = [yMin, yMax];
+    /*parameters.xAxis.domain = [xMin, xMax];
+    parameters.yAxis.domain = [yMin, yMax];*/
     
     functionPlot(parameters);
 }

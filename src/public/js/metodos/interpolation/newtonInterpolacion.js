@@ -81,6 +81,15 @@ function newtonInterpolacion(){
     console.log("Resultados: ");
     let X = XY[0]
     let Y = XY[1]
+
+    for(let i = 0; i < X.length; i++){
+        for(let j = i + 1; j < X.length; j++){
+            if(X[i] == X[j]){
+                alert("There cannot be equal values in X vector");
+                return("Error");
+            }
+        }
+    }
     if(X.length != Y.length){
         alert("X y Y deben tener el mismo tamaño");
         return("Error");
