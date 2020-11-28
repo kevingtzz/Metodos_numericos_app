@@ -346,6 +346,17 @@ function gaussSeidel(){
     var specRatius = ML.Array.max(valors);
     if(specRatius > 1){
         alert("Spectral radius from transition matrix is: " + specRatius + ". It is greater than 1 so the method does not converge");
+        let r_container = document.getElementById('espec');
+
+        if (stage_tables_created) {
+            r_container.removeChild(document.getElementById('r'));
+        }
+
+        let r = document.createElement('h4');
+        r.setAttribute('id', 'r');
+        let r_txt = document.createTextNode(`Spectral Ratio: ${specRatius}`);
+        r.appendChild(r_txt);
+        r_container.appendChild(r);
     }
     let C = multiplicarMatrices(DLI, b);
     let error = 1;
@@ -424,14 +435,6 @@ function gaussSeidel(){
     tablec.appendChild(tbodyc);
     stage_tables.appendChild(tablec);
     create_result_table(matrizC, tbodyc);
-
-    //console.log("Radio espectral: ");
-    //var e = new Matrix.EigenvalueDecomposition(T);
-   //var aba = e.realEigenvalues;
-    //for(let i = 0; i < aba.length; i++){
-    //    aba[i] = Math.abs(aba[i]).toPrecision(8);
-    //}
-    //console.log(max(aba));
 }
 
 function create_result_table(data, tbody) {
